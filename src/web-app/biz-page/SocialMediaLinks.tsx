@@ -2,7 +2,7 @@ import { Facebook, Instagram, LinkedIn, X } from "@mui/icons-material"
 import { Box, Link, List, ListItemIcon } from "@mui/material"
 
 const SocialMediaLinks: React.FC = () => {
-    // This will eventually be fetched from the database
+	// This will eventually be fetched from the database
 	const socialMediaIcons = [
 		{ name: "Facebook", icon: <Facebook />, url: "https://www.facebook.com" },
 		{
@@ -25,6 +25,7 @@ const SocialMediaLinks: React.FC = () => {
 			>
 				{socialMediaIcons.map((socialMediaElement) => (
 					<ListItemIcon
+						key={socialMediaElement.name}
 						sx={{
 							display: "flex",
 							// flexDirection: "row",
@@ -33,11 +34,7 @@ const SocialMediaLinks: React.FC = () => {
 						}}
 					>
 						{socialMediaElement.icon}
-						<Link
-							key={socialMediaElement.name}
-							href={socialMediaElement.url}
-							target="_blank"
-						/>
+						<Link href={socialMediaElement.url} target="_blank" />
 					</ListItemIcon>
 				))}
 			</List>
