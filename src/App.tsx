@@ -7,7 +7,8 @@ import "@fontsource/roboto/700.css"
 import "./app.css"
 
 import PublicHome from "./web-app/public-home/PublicHome"
-import BizPageLayout from "./web-app/biz-page/BizPageLayout"
+import NotFound from "./web-app/NotFound"
+import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
 
 // TODO
 /*
@@ -24,8 +25,9 @@ function App() {
 				<Route path="/" element={<PublicHome />} />
 				<Route
 					path={`/*`}
-					element={<BizPageLayout />}
+					element={<BizPageWrapper />}
 				/>
+				<Route path="/404" element={<NotFound />} />
 			</Routes>
 		</>
 	)
