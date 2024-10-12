@@ -21,7 +21,7 @@ const BizPageLayout: React.FC = () => {
 			{/* {restaurantLogo ? (
 				<img src={restaurantLogo as unknown as string} />
 			) : <></>} */}
-			<h2>{restaurantName}</h2>
+			<h1>{restaurantName}</h1>
 			<SocialMediaLinks />
 			<LinkList />
 		</Box>

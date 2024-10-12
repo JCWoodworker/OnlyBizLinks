@@ -1,5 +1,5 @@
 import { Box, List } from "@mui/material"
-import CustomLink from "../../custom-components/CustomLink"
+import LinkWrapper from "../../custom-components/LinkWrapper"
 
 type bizLink = {
 	id: number
@@ -29,7 +29,7 @@ const LinkList: React.FC = () => {
 				}}
 			>
 				{allLinks.map((link) => (
-					<CustomLink key={link.id} url={link.url} name={link.name} />
+					<LinkWrapper key={link.id} url={link.url} name={link.name} />
 				))}
 			</List>
 		</Box>

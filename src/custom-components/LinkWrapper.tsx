@@ -5,7 +5,7 @@ type LinkProps = {
 	name: string
 }
 
-const CustomLink: React.FC<LinkProps> = ({ url, name }) => {
+const LinkWrapper: React.FC<LinkProps> = ({ url, name }) => {
 	return (
 		<Link href={url} target="_blank" sx={{ textDecoration: "none" }}>
 			{name}
@@ -13,4 +13,4 @@ const CustomLink: React.FC<LinkProps> = ({ url, name }) => {
 	)
 }
 
-export default CustomLink
+export default LinkWrapper
