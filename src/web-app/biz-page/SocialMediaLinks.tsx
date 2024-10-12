@@ -28,7 +28,6 @@ const SocialMediaLinks: React.FC = () => {
 						key={socialMediaElement.name}
 						sx={{
 							display: "flex",
-							// flexDirection: "row",
 							justifyContent: "center",
 							alignItems: "space-around",
 						}}
