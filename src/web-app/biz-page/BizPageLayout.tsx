@@ -1,12 +1,14 @@
+import { useParams } from "react-router-dom"
 import { Box } from "@mui/material"
 import SocialMediaLinks from "./SocialMediaLinks"
 import LinkList from "./LinkList"
 
 const BizPageLayout: React.FC = () => {
 	// These will eventually be fetched from the database
-	const businessName = "Business Name Goes Here"
 	const imageSrc =
 		"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJE15mPqGKKRcHEBJJHnBS2kPjC2mn2zFZY-xSZHhWkXkrox4evFzmJ2QAfjIYuAQEYu4&usqp=CAU"
+	const { "*": businessName } = useParams<{ "*": string }>()
+
 
 	return (
 		<Box
