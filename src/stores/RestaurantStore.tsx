@@ -30,24 +30,5 @@ export const useRestaurantStore = create<RestaurantState & RestaurantAction>(
 				restaurantDomain: domain,
 				restaurantLogo: logo,
 			})),
-    
-		fetchRestaurantData: async (incomingDomain: string) => {
-			try {
-				const response = await fetch(`https://somefakeurl.com/myrestaurantlinks?domain=${incomingDomain}`);
-				if (!response.ok) {
-					throw new Error('Failed to fetch restaurant data');
-				}
-				const data = await response.json();
-				set(() => ({
-					restaurantId: data.id,
-					restaurantName: data.name,
-					restaurantDomain: data.domain,
-					restaurantLogo: data.logo,
-				}));
-			} catch (error) {
-				console.error('Error fetching restaurant data:', error);
-				// You might want to set an error state here or handle the error in some way
-			}
-		},
 	})
 )

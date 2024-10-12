@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 
 import "@fontsource/roboto/300.css"
@@ -10,23 +11,21 @@ import PublicHome from "./web-app/public-home/PublicHome"
 import NotFound from "./web-app/NotFound"
 import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
 
-// TODO
-/*
- * Fetch business data from database based on url param after forward slash
- * return 404 if no business is found
- * Hydrate business data and display their BizPage
- */
+import { useAppStore } from "./stores/AppStore"
 
 function App() {
-
+	const { setEnvironment, setBackendUrl } = useAppStore()
+	
+	useEffect(() => {
+		setEnvironment()
+		setBackendUrl()
+	}, [setEnvironment, setBackendUrl])
+	
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
-				<Route
-					path={`/:businessDomain`}
-					element={<BizPageWrapper />}
-				/>
+				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
