@@ -21,7 +21,7 @@ const BizPageWrapper: React.FC = () => {
 				setError(true)
 				setLoading(false)
 			} else if (data.id && data.domain) {
-				setRestaurant(data.id, data.name, data.logo, data.domain)
+				setRestaurant(data.id, data.name, data.domain, data.logo, )
 				setLoading(false)
 			} else {
 				setError(true)

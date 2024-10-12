@@ -24,17 +24,18 @@ const SocialMediaLinks: React.FC = () => {
 				}}
 			>
 				{socialMediaIcons.map((socialMediaElement) => (
-					<ListItemIcon
-						key={socialMediaElement.name}
-						sx={{
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "space-around",
-						}}
-					>
-						{socialMediaElement.icon}
-						<Link href={socialMediaElement.url} target="_blank" />
-					</ListItemIcon>
+					<Link href={socialMediaElement.url} target="_blank">
+						<ListItemIcon
+							key={socialMediaElement.name}
+							sx={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "space-around",
+							}}
+						>
+							{socialMediaElement.icon}
+						</ListItemIcon>
+					</Link>
 				))}
 			</List>
 		</Box>

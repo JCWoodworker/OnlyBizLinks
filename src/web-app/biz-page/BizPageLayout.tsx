@@ -5,9 +5,9 @@ import { useRestaurantStore } from "../../stores/RestaurantStore"
 
 const BizPageLayout: React.FC = () => {
 	const restaurantName = useRestaurantStore((state) => state.restaurantName)
-	// const restaurantLogo: URL | null = useRestaurantStore(
-	// 	(state) => state.restaurantLogo
-	// )
+	const restaurantLogo: URL | null = useRestaurantStore(
+		(state) => state.restaurantLogo
+	)
 
 	return (
 		<Box
@@ -18,9 +18,12 @@ const BizPageLayout: React.FC = () => {
 				alignItems: "center",
 			}}
 		>
-			{/* {restaurantLogo ? (
-				<img src={restaurantLogo as unknown as string} />
-			) : <></>} */}
+			{restaurantLogo && (
+				<img
+					src={restaurantLogo.toString()}
+					alt={`${restaurantName} logo`}
+				/>
+			)}
 			<h1>{restaurantName}</h1>
 			<SocialMediaLinks />
 			<LinkList />
