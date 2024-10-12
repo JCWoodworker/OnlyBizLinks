@@ -1,12 +1,27 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material"
+import { Link } from "react-router-dom"
 
 const PublicHome = () => {
-    return (
-        <Box>
-            <Typography variant="h2">Home Page</Typography>
-            <Typography variant="body1">Nothing Here Yet ... come back later</Typography>
-        </Box>
-    );
-};
+	const restaurantList = [
+		{ name: "Foolproof", domain: "foolproofbrewery" },
+		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
+	]
+	return (
+		<Box>
+			<Typography variant="h2" sx={{ fontWeight: "bolder" }}>
+				My Restaurant Links
+			</Typography>
+			<Divider sx={{ my: 2 }} />
+			<Typography variant="body1">Current Subscribers:</Typography>
+			<Box sx={{ m: 1, display: "flex", flexDirection: "column", gap: 1 }}>
+				{restaurantList.map((restaurant) => (
+					<Link key={restaurant.domain} to={`/${restaurant.domain}`}>
+						{restaurant.name}
+					</Link>
+				))}
+			</Box>
+		</Box>
+	)
+}
 
-export default PublicHome;
+export default PublicHome
