@@ -24,10 +24,10 @@ function App() {
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
 				<Route
-					path={`/*`}
+					path={`/:businessDomain`}
 					element={<BizPageWrapper />}
 				/>
-				<Route path="/404" element={<NotFound />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	)
