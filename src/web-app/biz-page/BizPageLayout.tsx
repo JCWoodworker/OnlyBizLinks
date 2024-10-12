@@ -1,14 +1,13 @@
-import { useParams } from "react-router-dom"
 import { Box } from "@mui/material"
 import SocialMediaLinks from "./SocialMediaLinks"
 import LinkList from "./LinkList"
+import { useRestaurantStore } from "../../stores/RestaurantStore"
 
 const BizPageLayout: React.FC = () => {
-	// These will eventually be fetched from the database
-	const imageSrc =
-		"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJE15mPqGKKRcHEBJJHnBS2kPjC2mn2zFZY-xSZHhWkXkrox4evFzmJ2QAfjIYuAQEYu4&usqp=CAU"
-	const { "*": businessName } = useParams<{ "*": string }>()
-
+	const restaurantName = useRestaurantStore((state) => state.restaurantName)
+	// const restaurantLogo: URL | null = useRestaurantStore(
+	// 	(state) => state.restaurantLogo
+	// )
 
 	return (
 		<Box
@@ -19,18 +18,10 @@ const BizPageLayout: React.FC = () => {
 				alignItems: "center",
 			}}
 		>
-			<Box
-				component="img"
-				src={imageSrc}
-				alt="Biz Logo"
-				sx={{
-					width: "200px",
-					height: "200px",
-					objectFit: "cover",
-					borderRadius: "50%",
-				}}
-			></Box>
-			<h2>{businessName}</h2>
+			{/* {restaurantLogo ? (
+				<img src={restaurantLogo as unknown as string} />
+			) : <></>} */}
+			<h2>{restaurantName}</h2>
 			<SocialMediaLinks />
 			<LinkList />
 		</Box>
