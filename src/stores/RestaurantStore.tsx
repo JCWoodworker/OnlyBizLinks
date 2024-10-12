@@ -1,5 +1,7 @@
 import { create } from "zustand"
 
+// TODO: manual refresh sends a 404 instead of just keeping the same data
+
 type RestaurantState = {
 	restaurantId: number | null
 	restaurantName: string | null

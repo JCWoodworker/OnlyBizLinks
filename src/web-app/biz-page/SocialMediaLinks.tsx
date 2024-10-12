@@ -1,4 +1,5 @@
-import { Facebook, Instagram, LinkedIn, X } from "@mui/icons-material"
+import { Facebook, Instagram, LinkedIn, X, YouTube } from "@mui/icons-material"
+import Pinterest from "@mui/icons-material/Pinterest"
 import { Box, Link, List, ListItemIcon } from "@mui/material"
 
 const SocialMediaLinks: React.FC = () => {
@@ -12,6 +13,12 @@ const SocialMediaLinks: React.FC = () => {
 		},
 		{ name: "LinkedIn", icon: <LinkedIn />, url: "https://www.linkedin.com" },
 		{ name: "X", icon: <X />, url: "https://www.x.com" },
+		{ name: "Youtube", icon: <YouTube />, url: "https://www.youtube.com" },
+		{
+			name: "Pinterest",
+			icon: <Pinterest />,
+			url: "https://www.pinterest.com",
+		}
 	]
 	return (
 		<Box>
