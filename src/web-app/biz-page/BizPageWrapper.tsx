@@ -13,8 +13,7 @@ const BizPageWrapper: React.FC = () => {
 	const { businessDomain } = useParams<{ businessDomain: string }>()
 
 	const setRestaurant = useRestaurantStore((state) => state.setRestaurant)
-	const backendUrl = useAppStore((state) => state.backendUrl)
-	const appUrl = useAppStore((state) => state.appUrl)
+	const { backendUrl, appUrl, configLoaded } = useAppStore()
 
 	const fetchRestaurant = async () => {
 		if (!businessDomain) {
@@ -24,7 +23,12 @@ const BizPageWrapper: React.FC = () => {
 			return
 		}
 
+		console.log("backendUrl:", backendUrl)
+		console.log("appUrl:", appUrl)
+		console.log("businessDomain:", businessDomain)
+
 		const url = `${backendUrl}/${appUrl}/${businessDomain}`
+		console.log("Constructed URL:", url)
 
 		try {
 			const response = await fetch(url)
@@ -53,11 +57,13 @@ const BizPageWrapper: React.FC = () => {
 	}
 
 	useEffect(() => {
-		fetchRestaurant()
+		if (configLoaded) {
+			fetchRestaurant()
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [businessDomain, backendUrl])
+	}, [configLoaded, businessDomain, backendUrl, appUrl])
 
-	if (loading) {
+	if (!configLoaded || loading) {
 		return <Loading />
 	}
 

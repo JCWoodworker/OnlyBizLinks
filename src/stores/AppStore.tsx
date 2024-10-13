@@ -3,7 +3,8 @@ import { create } from "zustand"
 type AppState = {
 	environment: string
 	backendUrl: string
-  appUrl:string
+	appUrl: string
+	configLoaded: boolean
 	initializeApp: () => void
 }
 
@@ -11,6 +12,7 @@ export const useAppStore = create<AppState>((set) => ({
 	environment: "",
 	backendUrl: "",
 	appUrl: "",
+	configLoaded: false,
 	initializeApp: () =>
 		set((state) => {
 			const environment = import.meta.env.VITE_ENVIRONMENT || "development"
@@ -32,6 +34,6 @@ export const useAppStore = create<AppState>((set) => ({
 					backendUrl = import.meta.env.VITE_BACKEND_URL_DEV
 			}
 
-			return { ...state, environment, backendUrl, appUrl}
+			return { ...state, environment, backendUrl, appUrl, configLoaded: true }
 		}),
 }))

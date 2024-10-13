@@ -9,15 +9,21 @@ import "./app.css"
 
 import PublicHome from "./web-app/public-home/PublicHome"
 import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
+import Loading from "./custom-components/Loading"  // Assuming you have a Loading component
 
 import { useAppStore } from "./stores/AppStore"
 
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
+	const configLoaded = useAppStore((state) => state.configLoaded)
 
 	useEffect(() => {
 		initializeApp()
 	}, [initializeApp])
+
+	if (!configLoaded) {
+		return <Loading />
+	}
 
 	return (
 		<>
