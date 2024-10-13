@@ -3,22 +3,40 @@ import { create } from "zustand"
 type AppState = {
 	environment: string
 	backendUrl: string
-	setEnvironment: () => void
-	setBackendUrl: () => void
+	appInitialized: boolean
+	appInitializationError: boolean
+	initializeApp: () => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
-	environment: '',
-	backendUrl: '',
-	setEnvironment: () => set({ environment: import.meta.env.VITE_ENVIRONMENT || 'development' }),
-	setBackendUrl: () => set((state) => {
-		switch (state.environment) {
-			case 'prod':
-				return { backendUrl: import.meta.env.VITE_BACKEND_URL_PROD }
-			case 'preprod':
-				return { backendUrl: import.meta.env.VITE_BACKEND_URL_PREPROD }
-			default:
-				return { backendUrl: import.meta.env.VITE_BACKEND_URL_DEV }
-		}
-	}),
+	environment: "",
+	backendUrl: "",
+	appInitialized: false,
+	appInitializationError: false,
+	initializeApp: () =>
+		set((state) => {
+			const environment = import.meta.env.VITE_ENVIRONMENT || "development"
+			let backendUrl: string
+
+			switch (environment) {
+				case "prod":
+					backendUrl = import.meta.env.VITE_BACKEND_URL_PROD
+					break
+				case "preprod":
+					backendUrl = import.meta.env.VITE_BACKEND_URL_PREPROD
+					break
+				case "dev":
+					backendUrl = import.meta.env.VITE_BACKEND_URL_DEV
+					break
+				default:
+					backendUrl = import.meta.env.VITE_BACKEND_URL_DEV
+			}
+
+			if (!environment || !backendUrl) {
+				console.error("Invalid environment or backend URL")
+				return { ...state, appInitialized: false, appInitializationError: true }
+			}
+
+			return { ...state, environment, backendUrl, appInitialized: true }
+		}),
 }))

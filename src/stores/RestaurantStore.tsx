@@ -6,7 +6,7 @@ type RestaurantState = {
 	restaurantId: number | null
 	restaurantName: string | null
 	restaurantDomain: string | null
-	restaurantLogo: URL | null
+	restaurantLogo: string | null
 }
 
 type RestaurantAction = {
@@ -14,7 +14,7 @@ type RestaurantAction = {
 		id: number | null,
 		name: string | null,
 		domain: string | null,
-		logo: URL | null
+		logo: string | null
 	) => void
 }
 

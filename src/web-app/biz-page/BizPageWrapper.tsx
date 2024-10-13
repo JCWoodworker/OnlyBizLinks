@@ -9,42 +9,46 @@ import { useRestaurantStore } from "../../stores/RestaurantStore"
 
 const BizPageWrapper: React.FC = () => {
 	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(false)
+	const [error, setError] = useState<string | null>(null)
 	const { businessDomain } = useParams<{ businessDomain: string }>()
 	const setRestaurant = useRestaurantStore((state) => state.setRestaurant)
 	const backendUrl = useAppStore((state) => state.backendUrl)
 
 	const fetchRestaurant = async () => {
+		if (!businessDomain) {
+			console.error("Business domain is undefined")
+			setError("Business domain is missing")
+			setLoading(false)
+			return
+		}
+
+		const url = `${backendUrl}/api/v1/subapps/myrestaurantlinks/${businessDomain}`
+		console.log("Fetching from URL:", url)
+
 		try {
-			const response = await fetch(
-				`${backendUrl}/api/v1/subapps/myrestaurantlinks/${businessDomain}`
-			)
-			const data = await response.json()
-			if (data.status && data.status === 404) {
-				setError(true)
-				setLoading(false)
-			} else if (data.id && data.domain) {
-				setRestaurant(data.id, data.name, data.domain, data.logo)
-				setLoading(false)
-			} else {
-				setError(true)
-				setLoading(false)
+			const response = await fetch(url)
+			console.log("Response status:", response.status)
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`)
 			}
+
+			const data = await response.json()
+			console.log("Received data:", data)
+
+			setRestaurant(data.id, data.name, data.domain, data.logo)
+			setError(null)
+			setLoading(false)
 		} catch (err) {
 			console.error("Error fetching restaurant:", err)
-			setError(true)
+			setError(err instanceof Error ? err.message : String(err))
 			setLoading(false)
 		}
 	}
 
 	useEffect(() => {
-		if (businessDomain) {
-			fetchRestaurant()
-		} else {
-			setError(true)
-			setLoading(false)
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		fetchRestaurant()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [businessDomain, backendUrl])
 
 	if (loading) {
@@ -52,6 +56,7 @@ const BizPageWrapper: React.FC = () => {
 	}
 
 	if (error) {
+		console.error("Rendering error state:", error)
 		return <NotFound />
 	}
 

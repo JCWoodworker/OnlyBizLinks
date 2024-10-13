@@ -5,7 +5,7 @@ import { useRestaurantStore } from "../../stores/RestaurantStore"
 
 const BizPageLayout: React.FC = () => {
 	const restaurantName = useRestaurantStore((state) => state.restaurantName)
-	const restaurantLogo: URL | null = useRestaurantStore(
+	const restaurantLogo: string | null = useRestaurantStore(
 		(state) => state.restaurantLogo
 	)
 
@@ -19,10 +19,7 @@ const BizPageLayout: React.FC = () => {
 			}}
 		>
 			{restaurantLogo && (
-				<img
-					src={restaurantLogo.toString()}
-					alt={`${restaurantName} logo`}
-				/>
+				<img src={restaurantLogo} alt={`${restaurantName} logo`} />
 			)}
 			<h1>{restaurantName}</h1>
 			<SocialMediaLinks />
