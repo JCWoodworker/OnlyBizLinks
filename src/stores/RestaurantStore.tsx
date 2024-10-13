@@ -1,7 +1,5 @@
 import { create } from "zustand"
 
-// TODO: manual refresh sends a 404 instead of just keeping the same data
-
 export type CustomLink = {
 	id: number
 	title: string
