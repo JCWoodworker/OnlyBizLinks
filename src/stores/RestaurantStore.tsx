@@ -6,6 +6,15 @@ export type CustomLink = {
 	url: string
 }
 
+export enum SocialMediaPlatform {
+		FACEBOOK = 'facebook',
+		INSTAGRAM = 'instagram',
+		X = 'x',
+		LINKEDIN = 'linkedin',
+		YOUTUBE = 'youtube',
+		PINTEREST = 'pinterest',
+	}
+	
 type RestaurantState = {
 	restaurantId: number | null
 	restaurantName: string | null
