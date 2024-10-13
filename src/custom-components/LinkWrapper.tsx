@@ -20,7 +20,7 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 					textDecoration: "none",
 					color: "inherit",
 					padding: "8px 16px",
-					borderRadius: "4px",
+					borderRadius: "10px",
 					border: "1px solid #ccc",
 					boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)",
 					transition: "all 0.1s ease",
