@@ -7,8 +7,8 @@ const PublicHome = () => {
 		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
 	]
 	return (
-		<Box>
-			<Typography variant="h2" sx={{ fontWeight: "bolder" }}>
+		<Box sx={{ textAlign: "center" }}>
+			<Typography variant="h2">
 				My Restaurant Links
 			</Typography>
 			<Divider sx={{ my: 2 }} />

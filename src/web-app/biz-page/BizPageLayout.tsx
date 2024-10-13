@@ -16,6 +16,7 @@ const BizPageLayout: React.FC = () => {
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
+				textAlign: "center",
 			}}
 		>
 			{restaurantLogo && (
