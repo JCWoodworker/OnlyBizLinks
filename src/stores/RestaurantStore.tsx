@@ -6,21 +6,29 @@ export type CustomLink = {
 	url: string
 }
 
+export type SocialMediaLink = {
+	id: number
+	social_media_platform: SocialMediaPlatform
+	url: string
+	is_active: boolean
+}
+
 export enum SocialMediaPlatform {
-		FACEBOOK = 'facebook',
-		INSTAGRAM = 'instagram',
-		X = 'x',
-		LINKEDIN = 'linkedin',
-		YOUTUBE = 'youtube',
-		PINTEREST = 'pinterest',
-	}
-	
+	FACEBOOK = "facebook",
+	INSTAGRAM = "instagram",
+	X = "x",
+	LINKEDIN = "linkedin",
+	YOUTUBE = "youtube",
+	PINTEREST = "pinterest",
+}
+
 type RestaurantState = {
 	restaurantId: number | null
 	restaurantName: string | null
 	restaurantDomain: string | null
 	restaurantLogo: string | null
 	restaurantCustomLinks: CustomLink[]
+	restaurantSocialMediaLinks: SocialMediaLink[]
 }
 
 type RestaurantAction = {
@@ -29,7 +37,8 @@ type RestaurantAction = {
 		name: string | null,
 		domain: string | null,
 		logo: string | null,
-		customLinks: CustomLink[]
+		customLinks: CustomLink[],
+		socialMediaLinks: SocialMediaLink[]
 	) => void
 }
 
@@ -40,14 +49,15 @@ export const useRestaurantStore = create<RestaurantState & RestaurantAction>(
 		restaurantDomain: null,
 		restaurantLogo: null,
 		restaurantCustomLinks: [],
-
-		setRestaurant: (id, name, domain, logo, customLinks) =>
+		restaurantSocialMediaLinks: [],
+		setRestaurant: (id, name, domain, logo, customLinks, socialMediaLinks) =>
 			set(() => ({
 				restaurantId: id,
 				restaurantName: name,
 				restaurantDomain: domain,
 				restaurantLogo: logo,
 				restaurantCustomLinks: customLinks || [],
+				restaurantSocialMediaLinks: socialMediaLinks || [],
 			})),
 	})
 )

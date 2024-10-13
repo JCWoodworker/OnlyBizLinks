@@ -35,7 +35,14 @@ const BizPageWrapper: React.FC = () => {
 
 			const data = await response.json()
 
-			setRestaurant(data.id, data.name, data.domain, data.logo, data.customLinks)
+			setRestaurant(
+				data.id,
+				data.name,
+				data.domain,
+				data.logo,
+				data.customLinks,
+				data.socialLinks
+			)
 			setError(null)
 			setLoading(false)
 		} catch (err) {
@@ -47,7 +54,7 @@ const BizPageWrapper: React.FC = () => {
 
 	useEffect(() => {
 		fetchRestaurant()
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [businessDomain, backendUrl])
 
 	if (loading) {

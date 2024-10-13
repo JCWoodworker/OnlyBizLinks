@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import SocialMediaLinks from "./SocialMediaLinks"
+import SocialMediaLinkWrapper from "./SocialMediaLinkWrapper"
 import LinkList from "./LinkList"
 import { useRestaurantStore } from "../../stores/RestaurantStore"
 
@@ -22,7 +22,7 @@ const BizPageLayout: React.FC = () => {
 				<img src={restaurantLogo} alt={`${restaurantName} logo`} />
 			)}
 			<h1>{restaurantName}</h1>
-			<SocialMediaLinks />
+			<SocialMediaLinkWrapper />
 			<LinkList />
 		</Box>
 	)
