@@ -23,12 +23,7 @@ const BizPageWrapper: React.FC = () => {
 			return
 		}
 
-		console.log("backendUrl:", backendUrl)
-		console.log("appUrl:", appUrl)
-		console.log("businessDomain:", businessDomain)
-
 		const url = `${backendUrl}/${appUrl}/${businessDomain}`
-		console.log("Constructed URL:", url)
 
 		try {
 			const response = await fetch(url)
