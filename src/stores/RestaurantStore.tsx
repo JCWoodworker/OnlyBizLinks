@@ -2,11 +2,18 @@ import { create } from "zustand"
 
 // TODO: manual refresh sends a 404 instead of just keeping the same data
 
+export type CustomLink = {
+	id: number
+	title: string
+	url: string
+}
+
 type RestaurantState = {
 	restaurantId: number | null
 	restaurantName: string | null
 	restaurantDomain: string | null
 	restaurantLogo: string | null
+	restaurantCustomLinks: CustomLink[]
 }
 
 type RestaurantAction = {
@@ -14,7 +21,8 @@ type RestaurantAction = {
 		id: number | null,
 		name: string | null,
 		domain: string | null,
-		logo: string | null
+		logo: string | null,
+		customLinks: CustomLink[]
 	) => void
 }
 
@@ -24,13 +32,15 @@ export const useRestaurantStore = create<RestaurantState & RestaurantAction>(
 		restaurantName: null,
 		restaurantDomain: null,
 		restaurantLogo: null,
+		restaurantCustomLinks: [],
 
-		setRestaurant: (id, name, domain, logo) =>
+		setRestaurant: (id, name, domain, logo, customLinks) =>
 			set(() => ({
 				restaurantId: id,
 				restaurantName: name,
 				restaurantDomain: domain,
 				restaurantLogo: logo,
+				restaurantCustomLinks: customLinks || [],
 			})),
 	})
 )

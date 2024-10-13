@@ -25,20 +25,17 @@ const BizPageWrapper: React.FC = () => {
 		}
 
 		const url = `${backendUrl}/${appUrl}/${businessDomain}`
-		console.log("Fetching from URL:", url)
 
 		try {
 			const response = await fetch(url)
-			console.log("Response status:", response.status)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
 			}
 
 			const data = await response.json()
-			console.log("Received data:", data)
 
-			setRestaurant(data.id, data.name, data.domain, data.logo)
+			setRestaurant(data.id, data.name, data.domain, data.logo, data.customLinks)
 			setError(null)
 			setLoading(false)
 		} catch (err) {

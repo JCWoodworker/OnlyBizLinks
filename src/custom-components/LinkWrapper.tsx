@@ -2,13 +2,13 @@ import { Link } from "@mui/material"
 
 type LinkProps = {
 	url: string
-	name: string
+	title: string
 }
 
-const LinkWrapper: React.FC<LinkProps> = ({ url, name }) => {
+const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 	return (
 		<Link href={url} target="_blank" sx={{ textDecoration: "none" }}>
-			{name}
+			{title}
 		</Link>
 	)
 }
