@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import SocialMediaLinkWrapper from "./SocialMediaLinkWrapper"
 import LinkList from "./LinkList"
 import { useRestaurantStore } from "../../stores/RestaurantStore"
@@ -21,7 +21,7 @@ const BizPageLayout: React.FC = () => {
 			{restaurantLogo && (
 				<img src={restaurantLogo} alt={`${restaurantName} logo`} />
 			)}
-			<h1>{restaurantName}</h1>
+			<Typography variant="h2">{restaurantName}</Typography>
 			<SocialMediaLinkWrapper />
 			<LinkList />
 		</Box>
