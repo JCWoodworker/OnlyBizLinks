@@ -11,8 +11,10 @@ const BizPageWrapper: React.FC = () => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const { businessDomain } = useParams<{ businessDomain: string }>()
+
 	const setRestaurant = useRestaurantStore((state) => state.setRestaurant)
 	const backendUrl = useAppStore((state) => state.backendUrl)
+	const appUrl = useAppStore((state) => state.appUrl)
 
 	const fetchRestaurant = async () => {
 		if (!businessDomain) {
@@ -22,7 +24,7 @@ const BizPageWrapper: React.FC = () => {
 			return
 		}
 
-		const url = `${backendUrl}/api/v1/subapps/myrestaurantlinks/${businessDomain}`
+		const url = `${backendUrl}/${appUrl}/${businessDomain}`
 		console.log("Fetching from URL:", url)
 
 		try {
