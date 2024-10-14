@@ -33,7 +33,9 @@ const BizPageLayout: React.FC = () => {
 					}}
 				/>
 			)}
-			<Typography variant="h3">{restaurantName}</Typography>
+			{!restaurantLogo && (
+				<Typography variant="h3">{restaurantName}</Typography>
+			)}
 			<SocialMediaLinkWrapper />
 			<LinkList />
 		</Box>
