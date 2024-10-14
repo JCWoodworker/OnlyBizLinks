@@ -11,9 +11,8 @@ const LinkList: React.FC = () => {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					gap: 1,
+					placeContent: "center",
+					gap: 1.5,
 				}}
 			>
 				{allLinks.map((link) => (

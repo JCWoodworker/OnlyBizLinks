@@ -21,12 +21,9 @@ function App() {
 		initializeApp()
 	}, [initializeApp])
 
-	if (!configLoaded) {
-		return <Loading />
-	}
-
 	return (
 		<>
+			{!configLoaded && <Loading />}
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
 				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />

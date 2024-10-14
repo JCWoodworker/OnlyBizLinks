@@ -9,8 +9,9 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 	return (
 		<Box
 			sx={{
-				display: 'flex',
-				width: '100%',
+				display: "flex",
+				placeContent: "center",
+				width: "100%",
 			}}
 		>
 			<Link
@@ -23,16 +24,16 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 					borderRadius: "10px",
 					border: "1px solid #ccc",
 					boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)",
-					transition: "all 0.1s ease",
+					transition: "all 0.2s ease",
 					flex: 1,
-					display: 'block',
-					textAlign: 'center',
+					display: "block",
+					textAlign: "center",
 					"&:hover": {
 						fontWeight: "bold",
 						boxShadow: "0 6px 12px rgba(0, 0, 0, 0.55)",
 					},
 					"&:active": {
-						backgroundColor: "rgba(173, 100, 255, 0.5)",
+						boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.55)",
 					},
 				}}
 			>
