@@ -20,9 +20,20 @@ const BizPageLayout: React.FC = () => {
 			}}
 		>
 			{restaurantLogo && (
-				<img src={restaurantLogo} alt={`${restaurantName} logo`} />
+				<Box
+					component="img"
+					src={restaurantLogo}
+					alt={`${restaurantName} logo`}
+					sx={{
+						width: "60%",
+						height: "auto",
+						borderRadius: "10px",
+						marginTop: "1rem",
+						marginBottom: "2rem",
+					}}
+				/>
 			)}
-			<Typography variant="h2">{restaurantName}</Typography>
+			<Typography variant="h3">{restaurantName}</Typography>
 			<SocialMediaLinkWrapper />
 			<LinkList />
 		</Box>

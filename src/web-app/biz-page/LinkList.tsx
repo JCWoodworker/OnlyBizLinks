@@ -6,7 +6,7 @@ const LinkList: React.FC = () => {
 	const allLinks = useRestaurantStore((state) => state.restaurantCustomLinks)
 
 	return (
-		<Box sx={{ marginTop: 2 }}>
+		<Box>
 			<List
 				sx={{
 					display: "flex",
