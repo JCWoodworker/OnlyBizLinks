@@ -25,8 +25,8 @@ const BizPageLayout: React.FC = () => {
 					src={restaurantLogo}
 					alt={`${restaurantName} logo`}
 					sx={{
-						width: "60%",
-						height: "auto",
+						width: "auto",
+						height: "200px",
 						borderRadius: "10px",
 						marginTop: "1rem",
 						marginBottom: "2rem",
