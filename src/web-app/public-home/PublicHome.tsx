@@ -9,7 +9,7 @@ const PublicHome = () => {
 	return (
 		<Box sx={{ textAlign: "center" }}>
 			<Typography variant="h2">
-				My Restaurant Links
+				OnlyBizLinks.com
 			</Typography>
 			<Divider sx={{ my: 2 }} />
 			<Typography variant="body1">Current Subscribers:</Typography>
