@@ -11,8 +11,13 @@ const PublicHome = () => {
 			<Typography variant="h2">OnlyBizLinks</Typography>
 			<Divider sx={{ my: 2 }} />
 			<Typography variant="body1">
-				OnlyBizLinks is a service that allows you to create a list custom links
-				for your business.
+				This is a customized application for restaurants and breweries launched
+				from embedded NFC chips in beer flights and custom wood products
+				exclusively built by James atRI Local Woodworks
+			</Typography>
+			<Divider sx={{ my: 2 }} />
+			<Typography variant="body1">
+				Please contact me at jc@rilocalwoodworks.com for more information
 			</Typography>
 			<Divider sx={{ my: 2 }} />
 			<Typography variant="body1">Current Subscribers:</Typography>
