@@ -1,16 +1,16 @@
 import { Box } from "@mui/material"
-import { useRestaurantStore } from "../../stores/RestaurantStore"
+import { useBusinessStore } from "../../stores/BusinessStore"
 import SocialMediaLinkList from "./SocialMediaLinkList"
 
 const SocialMediaLinkWrapper: React.FC = () => {
-	const restaurantSocialMediaLinks = useRestaurantStore(
-		(state) => state.restaurantSocialMediaLinks
+	const businessSocialMediaLinks = useBusinessStore(
+		(state) => state.businessSocialMediaLinks
 	)
 
 	return (
 		<Box>
 			<SocialMediaLinkList
-				restaurantSocialMediaLinks={[...restaurantSocialMediaLinks]}
+				businessSocialMediaLinks={[...businessSocialMediaLinks]}
 			/>
 		</Box>
 	)

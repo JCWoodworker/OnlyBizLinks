@@ -16,7 +16,7 @@ export const useAppStore = create<AppState>((set) => ({
 	initializeApp: () =>
 		set((state) => {
 			const environment = import.meta.env.VITE_ENVIRONMENT || "development"
-      const appUrl = import.meta.env.VITE_MYRESTAURANTLINKS_URL
+      const appUrl = import.meta.env.VITE_ONLYBIZLINKS_URL
 			let backendUrl: string
 
 

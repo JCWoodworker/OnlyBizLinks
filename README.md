@@ -1,4 +1,4 @@
-# My Restaurant Links
+# OnlyBizLinks
 
 ## Current Features
 
