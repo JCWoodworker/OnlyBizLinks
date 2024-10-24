@@ -8,9 +8,22 @@ const PublicHome = () => {
 	]
 	return (
 		<Box sx={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
-			<Typography variant="h2" sx={{ fontWeight: "bold" }}>
-				OnlyBizLinks
-			</Typography>
+			<Box
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: 1,
+				}}
+			>
+				<img
+					src="https://myrestaurantlinks-images.s3.us-east-2.amazonaws.com/OnlyBizLinksLogo.svg"
+					alt="OnlyBizLinks"
+					style={{ width: "200px", height: "200px", borderRadius: "10px" }}
+				/>
+				<Typography variant="h3">OnlyBizLinks.com</Typography>
+			</Box>
+
 			<Divider sx={{ my: 2 }} />
 			<Typography variant="body1">
 				This is a customized application for restaurants and breweries launched
