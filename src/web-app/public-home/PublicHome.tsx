@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 
 const PublicHome = () => {
-	const restaurantList = [
+	const businessList = [
 		{ name: "Foolproof", domain: "foolproofbrewery" },
 		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
 	]
@@ -26,9 +26,9 @@ const PublicHome = () => {
 			<Divider sx={{ my: 2 }} />
 			<Typography variant="h6">Business Listings:</Typography>
 			<Box sx={{ m: 1, display: "flex", flexDirection: "column", gap: 1 }}>
-				{restaurantList.map((restaurant) => (
-					<Link key={restaurant.domain} to={`/${restaurant.domain}`}>
-						{restaurant.name}
+				{businessList.map((business) => (
+					<Link key={business.domain} to={`/${business.domain}`}>
+						{business.name}
 					</Link>
 				))}
 			</Box>

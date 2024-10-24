@@ -1,9 +1,9 @@
 import { Box, List } from "@mui/material"
 import LinkWrapper from "../../custom-components/LinkWrapper"
-import { useRestaurantStore } from "../../stores/RestaurantStore"			
+import { useBusinessStore } from "../../stores/BusinessStore"
 
 const LinkList: React.FC = () => {
-	const allLinks = useRestaurantStore((state) => state.restaurantCustomLinks)
+	const allLinks = useBusinessStore((state) => state.businessCustomLinks)
 
 	return (
 		<Box>

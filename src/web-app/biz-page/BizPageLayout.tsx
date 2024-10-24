@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material"
 import SocialMediaLinkWrapper from "./SocialMediaLinkWrapper"
 import LinkList from "./LinkList"
-import { useRestaurantStore } from "../../stores/RestaurantStore"
+import { useBusinessStore } from "../../stores/BusinessStore"
 
 const BizPageLayout: React.FC = () => {
-	const restaurantName = useRestaurantStore((state) => state.restaurantName)
-	const restaurantLogo: string | null = useRestaurantStore(
-		(state) => state.restaurantLogo
+	const businessName = useBusinessStore((state) => state.businessName)
+	const businessLogo: string | null = useBusinessStore(
+		(state) => state.businessLogo
 	)
 
 	return (
@@ -19,11 +19,11 @@ const BizPageLayout: React.FC = () => {
 				textAlign: "center",
 			}}
 		>
-			{restaurantLogo && (
+			{businessLogo && (
 				<Box
 					component="img"
-					src={restaurantLogo}
-					alt={`${restaurantName} logo`}
+					src={businessLogo}
+					alt={`${businessName} logo`}
 					sx={{
 						width: "auto",
 						height: "200px",
@@ -33,9 +33,7 @@ const BizPageLayout: React.FC = () => {
 					}}
 				/>
 			)}
-			{!restaurantLogo && (
-				<Typography variant="h3">{restaurantName}</Typography>
-			)}
+			{!businessLogo && <Typography variant="h3">{businessName}</Typography>}
 			<SocialMediaLinkWrapper />
 			<LinkList />
 		</Box>

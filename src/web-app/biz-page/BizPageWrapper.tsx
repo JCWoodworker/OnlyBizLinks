@@ -5,17 +5,17 @@ import NotFound from "../NotFound"
 import Loading from "../../custom-components/Loading"
 
 import { useAppStore } from "../../stores/AppStore"
-import { useRestaurantStore } from "../../stores/RestaurantStore"
+import { useBusinessStore } from "../../stores/BusinessStore"
 
 const BizPageWrapper: React.FC = () => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const { businessDomain } = useParams<{ businessDomain: string }>()
 
-	const setRestaurant = useRestaurantStore((state) => state.setRestaurant)
+	const setBusiness = useBusinessStore((state) => state.setBusiness)
 	const { backendUrl, appUrl, configLoaded } = useAppStore()
 
-	const fetchRestaurant = async () => {
+	const fetchBusiness = async () => {
 		if (!businessDomain) {
 			console.error("Business domain is undefined")
 			setError("Business domain is missing")
@@ -34,7 +34,7 @@ const BizPageWrapper: React.FC = () => {
 
 			const data = await response.json()
 
-			setRestaurant(
+			setBusiness(
 				data.id,
 				data.name,
 				data.domain,
@@ -45,7 +45,7 @@ const BizPageWrapper: React.FC = () => {
 			setError(null)
 			setLoading(false)
 		} catch (err) {
-			console.error("Error fetching restaurant:", err)
+			console.error("Error fetching business:", err)
 			setError(err instanceof Error ? err.message : String(err))
 			setLoading(false)
 		}
@@ -53,7 +53,7 @@ const BizPageWrapper: React.FC = () => {
 
 	useEffect(() => {
 		if (configLoaded) {
-			fetchRestaurant()
+			fetchBusiness()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [configLoaded, businessDomain, backendUrl, appUrl])

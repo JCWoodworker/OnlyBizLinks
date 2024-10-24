@@ -7,14 +7,14 @@ import {
 	Pinterest,
 } from "@mui/icons-material"
 import { List, ListItem, Link } from "@mui/material"
-import { SocialMediaLink } from "../../stores/RestaurantStore"
+import { SocialMediaLink } from "../../stores/BusinessStore"
 
 interface SocialMediaLinkListProps {
-	restaurantSocialMediaLinks: SocialMediaLink[]
+	businessSocialMediaLinks: SocialMediaLink[]
 }
 
 const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
-	restaurantSocialMediaLinks,
+	businessSocialMediaLinks,
 }) => {
 	const socialMediaComponents = [
 		{ platform: "facebook", component: <Facebook /> },
@@ -35,7 +35,7 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 					alignItems: "center",
 				}}
 			>
-				{restaurantSocialMediaLinks.map((link) => {
+				{businessSocialMediaLinks.map((link) => {
 					const socialMediaComponent = socialMediaComponents.find(
 						(component) => component.platform === link.social_media_platform
 					)
