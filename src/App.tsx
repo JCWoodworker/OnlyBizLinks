@@ -12,6 +12,7 @@ import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
 import Loading from "./custom-components/Loading"  // Assuming you have a Loading component
 
 import { useAppStore } from "./stores/AppStore"
+import NotFound from "./web-app/NotFound"
 
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
@@ -27,7 +28,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
 				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
-				{/* <Route path="*" element={<NotFound />} /> */}
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	)
