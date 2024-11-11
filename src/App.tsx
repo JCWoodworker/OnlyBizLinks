@@ -9,7 +9,9 @@ import "./app.css"
 
 import PublicHome from "./web-app/public-home/PublicHome"
 import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
-import Loading from "./custom-components/Loading"  // Assuming you have a Loading component
+import Loading from "./custom-components/Loading"
+import SignUp from "./auth/SignUp"
+import SignIn from "./auth/SignIn"
 
 import { useAppStore } from "./stores/AppStore"
 import NotFound from "./web-app/NotFound"
@@ -27,6 +29,8 @@ function App() {
 			{!configLoaded && <Loading />}
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
+				<Route path="signup" element={<SignUp />} />
+				<Route path="signin" element={<SignIn />} />
 				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
