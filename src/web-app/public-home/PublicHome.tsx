@@ -5,9 +5,16 @@ const PublicHome = () => {
 	const businessList = [
 		{ name: "Foolproof", domain: "foolproofbrewery" },
 		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
+		{ name: "James Corey, Realtor", domain: "jamescoreyrealtor" },
 	]
 	return (
-		<Box sx={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
+		<Box
+			sx={{
+				textAlign: "center",
+				maxWidth: "600px",
+				margin: "0 auto",
+			}}
+		>
 			<Box
 				sx={{
 					display: "flex",

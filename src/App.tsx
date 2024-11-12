@@ -9,25 +9,35 @@ import "./app.css"
 
 import PublicHome from "./web-app/public-home/PublicHome"
 import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
-import Loading from "./custom-components/Loading"  // Assuming you have a Loading component
+import Loading from "./custom-components/Loading"
+import SignUp from "./auth/SignUp"
+import SignIn from "./auth/SignIn"
 
 import { useAppStore } from "./stores/AppStore"
+import { useAuthStore } from "./stores/AuthStore"
+import NotFound from "./web-app/NotFound"
 
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
 	const configLoaded = useAppStore((state) => state.configLoaded)
+	const { authData, isAuthenticated } = useAuthStore()
 
 	useEffect(() => {
 		initializeApp()
 	}, [initializeApp])
+
+	console.log('FROM APP.tsx - AuthData: ', authData)
+	console.log('FROM APP.tsx - Is Authenticated', isAuthenticated)
 
 	return (
 		<>
 			{!configLoaded && <Loading />}
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
+				<Route path="signup" element={<SignUp />} />
+				<Route path="signin" element={<SignIn />} />
 				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
-				{/* <Route path="*" element={<NotFound />} /> */}
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	)
