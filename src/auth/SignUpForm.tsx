@@ -1,14 +1,42 @@
 import { Box } from "@mui/material"
-import { useAuthStore } from "../stores/AuthStore"
 import { useState } from "react"
+import { SignUpPayload } from "../stores/AuthStore"
 
 const SignUpForm = () => {
-	const { signUserUp } = useAuthStore()
 	const [signUpFormData, setsignUpFormData] = useState({
-    email: "",
-    password: "",
-    signUpOrIn: "signup"
-  })
+		email: "",
+		password: "",
+		signUpOrIn: "signup",
+	})
+
+	const sendSignUpData = async (
+		event: React.FormEvent<HTMLFormElement>,
+		payload: SignUpPayload
+	) => {
+		event.preventDefault()
+		try {
+			const response = await fetch(
+				"http://localhost:3000/api/v1/authentication/sign-up",
+				{
+					method: "post",
+					body: JSON.stringify(payload),
+					headers: new Headers({
+						"Content-Type": "application/json",
+					}),
+				}
+			)
+
+			if (!response.ok) {
+				console.error("There was a problem signing up")
+			}
+
+			const message = response.json()
+
+			return message
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
 	return (
 		<Box
@@ -16,7 +44,7 @@ const SignUpForm = () => {
 				padding: "10px",
 			}}
 		>
-			<form onSubmit={() => signUserUp(signUpFormData)}>
+			<form onSubmit={(event) => sendSignUpData(event, signUpFormData)}>
 				<Box
 					sx={{
 						display: "flex",
@@ -28,28 +56,24 @@ const SignUpForm = () => {
 				>
 					<input
 						type="text"
-            name="email"
+						name="email"
 						placeholder="email"
 						style={{ height: "30px", width: "100%" }}
-            onChange={(e) =>
+						onChange={(e) =>
 							setsignUpFormData({ ...signUpFormData, email: e.target.value })
 						}
 					/>
 					<input
 						type="text"
-            name="password"
+						name="password"
 						placeholder="password"
 						style={{ height: "30px", width: "100%" }}
-            onChange={(e) =>
+						onChange={(e) =>
 							setsignUpFormData({ ...signUpFormData, password: e.target.value })
 						}
 					/>
 					<input type="text" defaultValue="signUp" hidden />
-					<button
-						type="submit"
-            name="signUpOrIn"
-						style={{ height: "30px" }}
-					>
+					<button type="submit" name="signUpOrIn" style={{ height: "30px" }}>
 						Submit Form
 					</button>
 				</Box>
