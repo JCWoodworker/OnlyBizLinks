@@ -21,7 +21,7 @@ function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
 	const configLoaded = useAppStore((state) => state.configLoaded)
 	const { authData, isAuthenticated } = useAuthStore()
-
+ 
 	useEffect(() => {
 		initializeApp()
 	}, [initializeApp])

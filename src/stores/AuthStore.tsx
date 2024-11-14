@@ -20,6 +20,10 @@ type AuthDataType = {
 type AuthState = {
 	authData: AuthDataType | null
 	isAuthenticated: boolean
+	persistAuth: boolean
+	setAuthData: (authData: AuthDataType) => void
+	setIsAuthenticated: (isAuthenticated: boolean) => void
+	setPersistAuth: (persistAuth: boolean) => void
 }
 
 export type SignUpPayload = {
@@ -28,7 +32,11 @@ export type SignUpPayload = {
   signUpOrIn: string
 }
 
-export const useAuthStore = create<AuthState>(() => ({
+export const useAuthStore = create<AuthState>((set) => ({
 	authData: null,
 	isAuthenticated: false,
+	persistAuth: false,
+	setAuthData: (authData: AuthDataType) => set((state: AuthState) => ({ ...state, authData })),
+	setIsAuthenticated: (isAuthenticated: boolean) => set((state: AuthState) => ({ ...state, isAuthenticated })),
+	setPersistAuth: (persistAuth: boolean) => set((state: AuthState) => ({ ...state, persistAuth })),
 }))

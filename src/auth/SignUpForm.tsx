@@ -1,8 +1,10 @@
 import { Box, CircularProgress } from "@mui/material"
 import { useState } from "react"
 import { SignUpPayload } from "../stores/AuthStore"
-import { emailRegex, passwordRegex } from "./constants"
 import CustomDialog from "../custom-components/CustomDialog"
+import { useNavigate } from "react-router-dom"
+import { validateSignUpPayload } from "./validation"
+
 const SignUpForm = () => {
 	const [signUpFormData, setsignUpFormData] = useState({
 		email: "",
@@ -15,6 +17,7 @@ const SignUpForm = () => {
 	const resetForm = () => {
 		setsignUpFormData({ email: "", password: "", signUpOrIn: "signup" })
 	}
+	const navigate = useNavigate()
 
 	const sendSignUpData = async (
 		event: React.FormEvent<HTMLFormElement>,
@@ -22,28 +25,11 @@ const SignUpForm = () => {
 	) => {
 		event.preventDefault()
 
-		if (!payload.email || !payload.password) {
-			setError("Please enter an email and password")
+		const validationError = validateSignUpPayload(payload)
+		if (validationError) {
+			setError(validationError)
 			return
 		}
-
-		if (payload.password.length < 8) {
-			setError("Password must be at least 8 characters long")
-			return
-		}
-
-		if (!passwordRegex.test(payload.password)) {
-			setError(
-				"Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 special character"
-			)
-			return
-		}
-
-		if (!emailRegex.test(payload.email)) {
-			setError("Please enter a valid email address")
-			return
-		}
-
 		try {
 			setError("")
 			setLoading(true)
@@ -71,6 +57,9 @@ const SignUpForm = () => {
 			setError("")
 			setLoading(false)
 			setOpenDialog(true)
+
+			await new Promise((resolve) => setTimeout(resolve, 2000))
+			navigate("/signin")
 
 			return data
 		} catch (error) {
