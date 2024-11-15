@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from "@mui/material"
+import { Box, Button, CircularProgress, TextField } from "@mui/material"
 import { useState } from "react"
 import { SignUpPayload } from "../stores/AuthStore"
 import CustomDialog from "../custom-components/CustomDialog"
@@ -69,37 +69,37 @@ const SignUpForm = () => {
 
 	return (
 		<Box
-			sx={{
-				padding: "10px",
-			}}
-		>
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "10px",
+				}}
+			>
 			{error && <p>{error}</p>}
 			{loading ? (
 				<CircularProgress />
 			) : (
 				<form onSubmit={(event) => sendSignUpData(event, signUpFormData)}>
-					<Box
+					<Box 
 						sx={{
 							display: "flex",
 							flexDirection: "column",
 							placeItems: "center",
 							width: "100%",
-							gap: 1,
+							gap: "10px",
 						}}
 					>
-						<input
-							type="text"
+						<input type="text" defaultValue="signUp" hidden />
+						<TextField
+							label="Email"
 							name="email"
-							placeholder="email"
-							style={{ height: "30px", width: "100%" }}
 							onChange={(e) =>
 								setsignUpFormData({ ...signUpFormData, email: e.target.value })
 							}
 						/>
-						<input
-							type="text"
+						<TextField
+							label="Password" 
 							name="password"
-							placeholder="password"
 							style={{ height: "30px", width: "100%" }}
 							onChange={(e) =>
 								setsignUpFormData({
@@ -108,10 +108,9 @@ const SignUpForm = () => {
 								})
 							}
 						/>
-						<input type="text" defaultValue="signUp" hidden />
-						<button type="submit" name="signUpOrIn" style={{ height: "30px" }}>
-							Submit Form
-						</button>
+						<Button type="submit" name="signUpOrIn" sx={{ marginTop: "20px" }}>
+							Sign Up
+						</Button>
 					</Box>
 				</form>
 			)}

@@ -32,6 +32,12 @@ export type SignUpPayload = {
   signUpOrIn: string
 }
 
+export type SignInPayload = {
+	email: string
+	password: string
+	signUpOrIn: string
+}
+
 export const useAuthStore = create<AuthState>((set) => ({
 	authData: null,
 	isAuthenticated: false,
