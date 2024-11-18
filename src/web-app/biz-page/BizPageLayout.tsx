@@ -14,8 +14,7 @@ const BizPageLayout: React.FC = () => {
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "center",
+				placeItems: "center",
 				textAlign: "center",
 			}}
 		>
@@ -25,11 +24,11 @@ const BizPageLayout: React.FC = () => {
 					src={businessLogo}
 					alt={`${businessName} logo`}
 					sx={{
-						width: "auto",
-						height: "200px",
+						width: { xs: "100%", sm: "300px" },
+						maxWidth: "300px",
+						height: "auto",
+						objectFit: "contain",
 						borderRadius: "10px",
-						marginTop: "1rem",
-						marginBottom: "2rem",
 					}}
 				/>
 			)}

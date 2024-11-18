@@ -20,14 +20,18 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 				sx={{
 					textDecoration: "none",
 					color: "inherit",
+					height: "30px",
+					width: "250px",
 					padding: "8px 16px",
 					borderRadius: "10px",
+
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+
 					border: "1px solid #ccc",
 					boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)",
 					transition: "all 0.2s ease",
-					flex: 1,
-					display: "block",
-					textAlign: "center",
 					"&:hover": {
 						fontWeight: "bold",
 						boxShadow: "0 6px 12px rgba(0, 0, 0, 0.55)",
