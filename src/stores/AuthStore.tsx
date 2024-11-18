@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { useAppStore } from "./AppStore"
 
 type UserInfoType = {
 	firstName: string
@@ -61,6 +62,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 	},
 	refreshAuthData: async () => {
 		const { authData } = get()
+		const { backendUrl } = useAppStore.getState()
 
 		if (!authData) {
 			return
@@ -68,7 +70,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
 		try {
 			const response = await fetch(
-				`http://localhost:3000/api/v1/authentication/refresh-tokens`,
+				`${backendUrl}/api/v1/authentication/refresh-tokens`,
 				{
 					method: "POST",
 					body: JSON.stringify({ refreshToken: authData.tokens.refreshToken }),
