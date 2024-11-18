@@ -13,11 +13,11 @@ import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
 import Loading from "./custom-components/Loading"
 import SignUp from "./auth/SignUp"
 import SignIn from "./auth/SignIn"
-import AuthenticatedHome from "./web-app/admin/authenticatedHome"
 import NotFound from "./web-app/NotFound"
 
 import { useAppStore } from "./stores/AppStore"
 import { useAuthStore } from "./stores/AuthStore"
+import AuthenticatedHome from "./web-app/admin/AuthenticatedHome"
 
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
