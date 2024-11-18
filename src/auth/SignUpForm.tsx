@@ -20,6 +20,8 @@ const SignUpForm = () => {
 	const navigate = useNavigate()
 
 	const sendSignUpData = async (
+		// TODO: Move this function to authStore
+
 		event: React.FormEvent<HTMLFormElement>,
 		payload: SignUpPayload
 	) => {
@@ -69,18 +71,18 @@ const SignUpForm = () => {
 
 	return (
 		<Box
-				sx={{
-					display: "flex",
-					flexDirection: "column",
-					gap: "10px",
-				}}
-			>
+			sx={{
+				display: "flex",
+				flexDirection: "column",
+				gap: "10px",
+			}}
+		>
 			{error && <p>{error}</p>}
 			{loading ? (
 				<CircularProgress />
 			) : (
 				<form onSubmit={(event) => sendSignUpData(event, signUpFormData)}>
-					<Box 
+					<Box
 						sx={{
 							display: "flex",
 							flexDirection: "column",
@@ -98,7 +100,7 @@ const SignUpForm = () => {
 							}
 						/>
 						<TextField
-							label="Password" 
+							label="Password"
 							name="password"
 							style={{ height: "30px", width: "100%" }}
 							onChange={(e) =>

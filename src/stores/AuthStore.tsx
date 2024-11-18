@@ -24,12 +24,14 @@ type AuthState = {
 	setAuthData: (authData: AuthDataType) => void
 	setIsAuthenticated: (isAuthenticated: boolean) => void
 	setPersistAuth: (persistAuth: boolean) => void
+	signOut: () => void
+	refreshAuthData: () => Promise<void>
 }
 
 export type SignUpPayload = {
-  email: string
-  password: string
-  signUpOrIn: string
+	email: string
+	password: string
+	signUpOrIn: string
 }
 
 export type SignInPayload = {
@@ -38,11 +40,66 @@ export type SignInPayload = {
 	signUpOrIn: string
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
 	authData: null,
 	isAuthenticated: false,
 	persistAuth: false,
-	setAuthData: (authData: AuthDataType) => set((state: AuthState) => ({ ...state, authData })),
-	setIsAuthenticated: (isAuthenticated: boolean) => set((state: AuthState) => ({ ...state, isAuthenticated })),
-	setPersistAuth: (persistAuth: boolean) => set((state: AuthState) => ({ ...state, persistAuth })),
+	setAuthData: (authData: AuthDataType) =>
+		set((state: AuthState) => ({ ...state, authData })),
+	setIsAuthenticated: (isAuthenticated: boolean) =>
+		set((state: AuthState) => ({ ...state, isAuthenticated })),
+	setPersistAuth: (persistAuth: boolean) =>
+		set((state: AuthState) => ({ ...state, persistAuth })),
+	signOut: () => {
+		localStorage.removeItem("authData")
+		set((state: AuthState) => ({
+			...state,
+			authData: null,
+			isAuthenticated: false,
+			persistAuth: false,
+		}))
+	},
+	refreshAuthData: async () => {
+		const { authData } = get()
+
+		if (!authData) {
+			return
+		}
+
+		try {
+			const response = await fetch(
+				`http://localhost:3000/api/v1/authentication/refresh-tokens`,
+				{
+					method: "POST",
+					body: JSON.stringify({ refreshToken: authData.tokens.refreshToken }),
+					headers: new Headers({
+						"Content-Type": "application/json",
+					}),
+				}
+			)
+
+			if (!response.ok) {
+				console.error("Failed to refresh auth data - clearing local storage")
+				localStorage.removeItem("authData")
+				set((state) => ({
+					...state,
+					authData: null,
+					isAuthenticated: false,
+					persistAuth: false,
+				}))
+				return
+			}
+
+			const data = await response.json()
+
+			localStorage.setItem("authData", JSON.stringify(data))
+			set((state) => ({
+				...state,
+				authData: data.authData,
+				isAuthenticated: true,
+			}))
+		} catch (error) {
+			console.error(error)
+		}
+	},
 }))

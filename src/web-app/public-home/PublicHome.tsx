@@ -1,12 +1,14 @@
-import { Box, Divider, Typography } from "@mui/material"
+import { Box, Button, Divider, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const PublicHome = () => {
 	const businessList = [
-		{ name: "Foolproof", domain: "foolproofbrewery" },
+		{ name: "Foolproof Brewery", domain: "foolproofbrewery" },
 		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
 		{ name: "James Corey - Realtor", domain: "jamescoreyrealtor" },
 	]
+	const navigate = useNavigate()
 	return (
 		<Box
 			sx={{
@@ -28,7 +30,13 @@ const PublicHome = () => {
 					alt="OnlyBizLinks"
 					style={{ width: "200px", height: "200px", borderRadius: "10px" }}
 				/>
-				<Typography variant="h3" sx={{ fontFamily: "'Titillium Web', 'Dosis', sans-serif", fontWeight: 700 }}>
+				<Typography
+					variant="h3"
+					sx={{
+						fontFamily: "'Titillium Web', 'Dosis', sans-serif",
+						fontWeight: 700,
+					}}
+				>
 					OnlyBizLinks
 				</Typography>
 			</Box>
@@ -55,7 +63,7 @@ const PublicHome = () => {
 						<Typography
 							variant="body1"
 							sx={{
-								backgroundColor: "#e3f2fd",
+								backgroundColor: "#D2C7FF",
 								width: "300px",
 								transition: "all 0.3s ease",
 								padding: "1rem",
@@ -84,6 +92,14 @@ const PublicHome = () => {
 					Please contact me at jc@rilocalwoodworks.com for more information
 				</a>
 			</Typography>
+			<Divider sx={{ my: 2 }} />
+			<Button
+				variant="contained"
+				color="primary"
+				onClick={() => navigate("/signin")}
+			>
+				Sign In
+			</Button>
 		</Box>
 	)
 }
