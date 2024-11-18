@@ -27,6 +27,7 @@ const SignInForm = () => {
 
 		try {
 			setLoading(true)
+			setError("")
 			// TODO: use env variables here
 			const response = await fetch(`${backendUrl}/api/v1/authentication/sign-in`, {
 				method: "post",
