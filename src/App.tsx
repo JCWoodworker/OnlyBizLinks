@@ -14,20 +14,15 @@ import SignUp from "./auth/SignUp"
 import SignIn from "./auth/SignIn"
 
 import { useAppStore } from "./stores/AppStore"
-import { useAuthStore } from "./stores/AuthStore"
 import NotFound from "./web-app/NotFound"
 
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
 	const configLoaded = useAppStore((state) => state.configLoaded)
-	const { authData, isAuthenticated } = useAuthStore()
- 
+
 	useEffect(() => {
 		initializeApp()
 	}, [initializeApp])
-
-	console.log('FROM APP.tsx - AuthData: ', authData)
-	console.log('FROM APP.tsx - Is Authenticated', isAuthenticated)
 
 	return (
 		<>
