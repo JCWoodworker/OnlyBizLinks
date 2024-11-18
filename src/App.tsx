@@ -11,7 +11,7 @@ import "./app.css"
 import PublicHome from "./web-app/public-home/PublicHome"
 import BizPageWrapper from "./web-app/biz-page/BizPageWrapper"
 import Loading from "./custom-components/Loading"
-import SignUp from "./auth/SignUp"
+// import SignUp from "./auth/SignUp"
 import SignIn from "./auth/SignIn"
 import NotFound from "./web-app/NotFound"
 
@@ -22,12 +22,8 @@ import AuthenticatedHome from "./web-app/admin/AuthenticatedHome"
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
 	const configLoaded = useAppStore((state) => state.configLoaded)
-	const {
-		authData,
-		setAuthData,
-		isAuthenticated,
-		setIsAuthenticated,
-	} = useAuthStore()
+	const { authData, setAuthData, isAuthenticated, setIsAuthenticated } =
+		useAuthStore()
 
 	useEffect(() => {
 		initializeApp()
@@ -68,7 +64,10 @@ function App() {
 					) : (
 						<Route path="/" element={<PublicHome />} />
 					)}
-					<Route path="signup" element={<SignUp />} />
+
+					{/* Clients will be signed up manually for the time being*/}
+					{/* <Route path="signup" element={<SignUp />} /> */}
+
 					<Route path="signin" element={<SignIn />} />
 					<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
 					<Route path="*" element={<NotFound />} />
