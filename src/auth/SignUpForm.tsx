@@ -4,6 +4,7 @@ import { SignUpPayload } from "../stores/AuthStore"
 import CustomDialog from "../custom-components/CustomDialog"
 import { useNavigate } from "react-router-dom"
 import { validateSignUpPayload } from "./validation"
+import { useAppStore } from "../stores/AppStore"
 
 const SignUpForm = () => {
 	const [signUpFormData, setsignUpFormData] = useState({
@@ -18,6 +19,7 @@ const SignUpForm = () => {
 		setsignUpFormData({ email: "", password: "", signUpOrIn: "signup" })
 	}
 	const navigate = useNavigate()
+	const { backendUrl } = useAppStore()
 
 	const sendSignUpData = async (
 		// TODO: Move this function to authStore
@@ -36,7 +38,7 @@ const SignUpForm = () => {
 			setError("")
 			setLoading(true)
 			const response = await fetch(
-				"http://localhost:3000/api/v1/authentication/sign-up",
+				`${backendUrl}/api/v1/authentication/sign-up`,
 				{
 					method: "post",
 					body: JSON.stringify(payload),

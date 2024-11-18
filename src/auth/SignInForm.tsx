@@ -3,6 +3,7 @@ import { useState } from "react"
 import { SignInPayload } from "../stores/AuthStore"
 import { useAuthStore } from "../stores/AuthStore"
 import { useNavigate } from "react-router-dom"
+import { useAppStore } from "../stores/AppStore"
 
 const SignInForm = () => {
 	const [signInFormData, setSignInFormData] = useState({
@@ -13,6 +14,7 @@ const SignInForm = () => {
 	const [error, setError] = useState("")
 	const [loading, setLoading] = useState(false)
 	const { setAuthData, setIsAuthenticated } = useAuthStore()
+	const { backendUrl } = useAppStore()
 	const navigate = useNavigate()
 
 	const sendSignInData = async (
@@ -25,10 +27,9 @@ const SignInForm = () => {
 
 		try {
 			setLoading(true)
-			const response = await fetch(
-				"http://localhost:3000/api/v1/authentication/sign-in",
-				{
-					method: "post",
+			// TODO: use env variables here
+			const response = await fetch(`${backendUrl}/api/v1/authentication/sign-in`, {
+				method: "post",
 					body: JSON.stringify(payload),
 					headers: new Headers({
 						"Content-Type": "application/json",
