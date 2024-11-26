@@ -13,7 +13,8 @@ const SignInForm = () => {
 	})
 	const [error, setError] = useState("")
 	const [loading, setLoading] = useState(false)
-	const { setAuthData, setIsAuthenticated } = useAuthStore()
+	const { setAuthData, setIsAuthenticated, setUserBusinessData } =
+		useAuthStore()
 	const { backendUrl } = useAppStore()
 	const navigate = useNavigate()
 
@@ -29,8 +30,10 @@ const SignInForm = () => {
 			setLoading(true)
 			setError("")
 			// TODO: use env variables here
-			const response = await fetch(`${backendUrl}/api/v1/authentication/sign-in`, {
-				method: "post",
+			const response = await fetch(
+				`${backendUrl}/api/v1/authentication/sign-in`,
+				{
+					method: "post",
 					body: JSON.stringify(payload),
 					headers: new Headers({
 						"Content-Type": "application/json",
@@ -46,9 +49,11 @@ const SignInForm = () => {
 
 			const data = await response.json()
 			localStorage.setItem("authData", JSON.stringify(data.authData))
-
 			setAuthData(data.authData)
 			setIsAuthenticated(true)
+			if (data.businesses) {
+				setUserBusinessData(data.businesses)
+			}
 			navigate(`/`)
 
 			setLoading(false)
