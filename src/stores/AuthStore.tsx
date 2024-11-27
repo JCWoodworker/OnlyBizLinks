@@ -124,10 +124,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 			const data = await response.json()
 
 			localStorage.setItem("authData", JSON.stringify(data))
+			const businessData = data.businesses ? data.businesses : []
+
 			set((state) => ({
 				...state,
 				authData: data.authData,
 				isAuthenticated: true,
+				userBusinessData: businessData
 			}))
 		} catch (error) {
 			console.error(error)
