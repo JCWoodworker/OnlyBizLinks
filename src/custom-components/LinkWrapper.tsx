@@ -20,8 +20,15 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 				sx={{
 					textDecoration: "none",
 					color: "inherit",
-					height: "30px",
-					width: "250px",
+					height: {
+						xs: "45px",
+						lg: "50px",
+					},
+					width: {
+						xs: "80vw",
+						md: "350px",
+						lg: "400px",
+					},
 					padding: "8px 16px",
 					borderRadius: "10px",
 
