@@ -63,7 +63,7 @@ const PublicHome = () => {
 						<Typography
 							variant="body1"
 							sx={{
-								backgroundColor: "#D2C7FF",
+								// backgroundColor: "#D2C7FF",
 								width: "300px",
 								transition: "all 0.3s ease",
 								padding: "1rem",

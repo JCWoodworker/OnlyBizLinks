@@ -6,7 +6,8 @@ const EditBoxLayout = ({ children }: { children: React.ReactNode }) => {
 			sx={{
 				margin: "10px",
 				padding: "10px",
-				width: "95%",
+				width: { xs: "93%", md: "50%" },
+				minHeight: "75px",
 				height: "auto",
 
 				display: "flex",

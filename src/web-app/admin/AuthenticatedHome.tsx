@@ -2,6 +2,7 @@ import { Box, Button } from "@mui/material"
 import { useAuthStore } from "../../stores/AuthStore"
 import CustomLinksAdminContainer from "./custom-links/CustomLinksAdminContainer"
 import SocialLinksAdminContainer from "./social-links/SocialLinksAdminContainer"
+import ChangeLogoContainer from "./ChangeLogoContainer"
 
 const AuthenticatedHome = () => {
 	const { refreshAuthData, signOut, userBusinessData } = useAuthStore()
@@ -30,6 +31,7 @@ const AuthenticatedHome = () => {
 		displayScreen = (
 			<>
 				<h3>{userBusinessData[0].name}</h3>
+				<ChangeLogoContainer />
 				<CustomLinksAdminContainer />
 				<SocialLinksAdminContainer />
 			</>
@@ -38,17 +40,19 @@ const AuthenticatedHome = () => {
 
 	return (
 		<>
-			<Box sx={{
-				position: 'fixed',
-				bottom: 0,
-				left: 0,
-				right: 0,
-				padding: 2,
-				display: 'flex',
-				flexDirection: 'Column',
-				gap: 2,
-				backgroundColor: 'white'
-			}}>
+			<Box
+				sx={{
+					position: "fixed",
+					bottom: 0,
+					left: 0,
+					right: 0,
+					padding: 2,
+					display: "flex",
+					flexDirection: "column",
+					gap: 2,
+					backgroundColor: "white",
+				}}
+			>
 				<Button onClick={signOut}>Sign Out</Button>
 				<Button onClick={refreshAuthData}>Refresh Auth Data</Button>
 			</Box>

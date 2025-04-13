@@ -1,9 +1,10 @@
+import { Typography } from "@mui/material"
 import EditBoxLayout from "../EditBoxLayout"
 
 const SocialLinksAdminContainer = () => {
 	return (
 		<EditBoxLayout>
-			<div>Social Links Editor</div>
+			<Typography variant="body1">Social Links Editor</Typography>
 		</EditBoxLayout>
 	)
 }
