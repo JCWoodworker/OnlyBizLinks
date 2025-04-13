@@ -30,15 +30,6 @@ const PublicHome = () => {
 					alt="OnlyBizLinks"
 					style={{ width: "200px", height: "200px", borderRadius: "10px" }}
 				/>
-				<Typography
-					variant="h3"
-					sx={{
-						fontFamily: "'Titillium Web', 'Dosis', sans-serif",
-						fontWeight: 700,
-					}}
-				>
-					OnlyBizLinks
-				</Typography>
 			</Box>
 
 			<Divider sx={{ my: 2 }} />
