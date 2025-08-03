@@ -6,7 +6,6 @@ const PublicHome = () => {
 	const businessList = [
 		{ name: "Foolproof Brewery", domain: "foolproofbrewery" },
 		{ name: "Ocean Mist", domain: "oceanmistrestaurant" },
-		{ name: "James Corey - Realtor", domain: "jamescoreyrealtor" },
 	]
 	const navigate = useNavigate()
 	return (
@@ -28,7 +27,7 @@ const PublicHome = () => {
 				<img
 					src="https://myrestaurantlinks-images.s3.us-east-2.amazonaws.com/OnlyBizLinksLogo.svg"
 					alt="OnlyBizLinks"
-					style={{ width: "200px", height: "200px", borderRadius: "10px" }}
+					style={{ width: "250px", height: "250px", borderRadius: "10px" }}
 				/>
 			</Box>
 
