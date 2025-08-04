@@ -22,28 +22,50 @@ import AuthenticatedHome from "./web-app/admin/AuthenticatedHome"
 function App() {
 	const initializeApp = useAppStore((state) => state.initializeApp)
 	const configLoaded = useAppStore((state) => state.configLoaded)
-	const { authData, setAuthData, isAuthenticated, setIsAuthenticated } =
-		useAuthStore()
+	const {
+		authData,
+		setAuthData,
+		isAuthenticated,
+		setIsAuthenticated,
+		refreshAuthData,
+	} = useAuthStore()
 
 	useEffect(() => {
 		initializeApp()
 	}, [initializeApp])
 
 	useEffect(() => {
-		const savedAuthData = localStorage.getItem("authData")
+		const initializeAuth = async () => {
+			const savedAuthData = localStorage.getItem("authData")
 
-		if (savedAuthData === "undefined") {
-			localStorage.removeItem("authData")
-			setIsAuthenticated(false)
+			if (savedAuthData === "undefined" || savedAuthData === "null") {
+				localStorage.removeItem("authData")
+				setIsAuthenticated(false)
+				return
+			}
+
+			if (savedAuthData && !authData) {
+				try {
+					const receivedAuthData = JSON.parse(savedAuthData)
+					setAuthData(receivedAuthData)
+					setIsAuthenticated(true)
+
+					// Attempt to refresh tokens to ensure they're still valid
+					await refreshAuthData()
+				} catch (error) {
+					console.error("Failed to parse saved auth data:", error)
+					localStorage.removeItem("authData")
+					setIsAuthenticated(false)
+				}
+			} else if (!savedAuthData) {
+				setIsAuthenticated(false)
+			}
 		}
-		if (savedAuthData && !authData) {
-			const receivedAuthData = JSON.parse(savedAuthData)
-			setAuthData(receivedAuthData)
-			setIsAuthenticated(true)
-		} else if (!savedAuthData) {
-			setIsAuthenticated(false)
+
+		if (configLoaded) {
+			initializeAuth()
 		}
-	}, [authData, setAuthData, setIsAuthenticated])
+	}, [authData, setAuthData, setIsAuthenticated, refreshAuthData, configLoaded])
 
 	return (
 		<Box
