@@ -1,4 +1,3 @@
-import { Box } from "@mui/material"
 import { useBusinessStore } from "../../stores/BusinessStore"
 import SocialMediaLinkList from "./SocialMediaLinkList"
 
@@ -8,11 +7,9 @@ const SocialMediaLinkWrapper: React.FC = () => {
 	)
 
 	return (
-		<Box>
-			<SocialMediaLinkList
-				businessSocialMediaLinks={[...businessSocialMediaLinks]}
-			/>
-		</Box>
+		<SocialMediaLinkList
+			businessSocialMediaLinks={[...businessSocialMediaLinks]}
+		/>
 	)
 }
 
