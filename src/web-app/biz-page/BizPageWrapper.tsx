@@ -10,7 +10,7 @@ const BizPageWrapper: React.FC = () => {
 	const fetchBusiness = 
 		async () => {
 			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/${import.meta.env.VITE_ONLYBIZLINKS_URL}/${businessDomain}`
+				`https://nestjs-mega-backend-prod-893a099fba68.herokuapp.com/${import.meta.env.VITE_ONLYBIZLINKS_URL}/${businessDomain}`
 			)
 			if (!response.ok && response.status === 404) {
 				navigate("/404")
