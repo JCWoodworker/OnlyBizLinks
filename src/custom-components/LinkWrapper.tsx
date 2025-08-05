@@ -1,5 +1,6 @@
-import { Link, Box, Card, Typography } from "@mui/material"
-import { Launch } from "@mui/icons-material"
+import { Button } from "../../components/ui/button"
+import { ExternalLink } from "lucide-react"
+import { motion } from "framer-motion"
 
 type LinkProps = {
 	url: string
@@ -8,107 +9,31 @@ type LinkProps = {
 
 const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 	return (
-		<Box
-			sx={{
-				display: "flex",
-				justifyContent: "center",
-				width: "100%",
-			}}
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.3 }}
+			className="w-full"
 		>
-			<Card
-				component={Link}
-				href={url}
-				target="_blank"
-				rel="noopener noreferrer"
-				elevation={0}
-				sx={{
-					textDecoration: "none",
-					color: "inherit",
-					width: "100%",
-					maxWidth: { xs: "95vw", sm: "380px" },
-					minHeight: { xs: 44, sm: 48 },
-					px: { xs: 2, sm: 2.5 },
-					py: { xs: 1.25, sm: 1.5 },
-					borderRadius: { xs: 2.5, sm: 3 },
-					background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-					border: "1px solid",
-					borderColor: "primary.light",
-					boxShadow: {
-						xs: "0 2px 8px rgba(102, 126, 234, 0.12)",
-						sm: "0 4px 12px rgba(102, 126, 234, 0.15)",
-					},
-					transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-					position: "relative",
-					overflow: "hidden",
-
-					"&::before": {
-						content: '""',
-						position: "absolute",
-						top: 0,
-						left: 0,
-						right: 0,
-						bottom: 0,
-						background:
-							"linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
-						opacity: 0,
-						transition: "opacity 0.3s ease",
-					},
-
-					"&:hover": {
-						transform: { xs: "translateY(-2px)", sm: "translateY(-3px)" },
-						boxShadow: {
-							xs: "0 4px 16px rgba(102, 126, 234, 0.2)",
-							sm: "0 8px 24px rgba(102, 126, 234, 0.25)",
-						},
-						"&::before": {
-							opacity: 1,
-						},
-					},
-
-					"&:active": {
-						transform: "translateY(0)",
-						boxShadow: {
-							xs: "0 2px 8px rgba(102, 126, 234, 0.15)",
-							sm: "0 4px 12px rgba(102, 126, 234, 0.2)",
-						},
-					},
-
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "space-between",
-					gap: { xs: 1.5, sm: 2 },
-				}}
+			<Button
+				asChild
+				variant="outline"
+				size="lg"
+				className="w-full h-12 justify-between text-left bg-gradient-to-r from-white to-blue-50 border-blue-200 hover:from-blue-50 hover:to-indigo-100 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-400/30 transition-all duration-200 active:scale-[0.98]"
 			>
-				<Typography
-					variant="body2"
-					sx={{
-						fontWeight: 600,
-						fontSize: { xs: "0.875rem", sm: "0.95rem", md: "1rem" },
-						color: "white",
-						textAlign: "left",
-						flex: 1,
-						letterSpacing: "0.02em",
-						lineHeight: 1.3,
-					}}
+				<a
+					href={url}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="flex items-center justify-between w-full px-4 py-3 group"
 				>
-					{title}
-				</Typography>
-
-				<Launch
-					sx={{
-						color: "white",
-						fontSize: { xs: 16, sm: 18 },
-						opacity: 0.8,
-						transition: "all 0.3s ease",
-						transform: "translateX(0)",
-						".MuiCard-root:hover &": {
-							opacity: 1,
-							transform: "translateX(2px)",
-						},
-					}}
-				/>
-			</Card>
-		</Box>
+					<span className="font-medium text-slate-800 truncate pr-2">
+						{title}
+					</span>
+					<ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
+				</a>
+			</Button>
+		</motion.div>
 	)
 }
 

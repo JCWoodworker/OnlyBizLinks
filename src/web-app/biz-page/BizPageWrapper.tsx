@@ -1,18 +1,23 @@
 import { useContext, useEffect, useState } from "react"
 import BizPageLayout, { BusinessData } from "./BizPageLayout"
 import { useNavigate, useParams } from "react-router-dom"
-import { environmentUrlContext } from "../../App"
+import Loading from "../../custom-components/Loading"
+import { environmentUrlContext } from "@/App"
 
 const BizPageWrapper: React.FC = () => {
 	const environmentUrl = useContext(environmentUrlContext)
 	const navigate = useNavigate()
 	const { businessDomain } = useParams<{ businessDomain: string }>()
 	const [businessData, setBusinessData] = useState<BusinessData | null>(null)
+	const [isLoading, setIsLoading] = useState(true)
 
-	const fetchBusiness = 
-		async () => {
+	const fetchBusiness = async () => {
+		try {
+			setIsLoading(true)
 			const response = await fetch(
-				`${environmentUrl}/${import.meta.env.VITE_ONLYBIZLINKS_URL}/${businessDomain}`
+				`${environmentUrl}/${
+					import.meta.env.VITE_ONLYBIZLINKS_URL
+				}/${businessDomain}`
 			)
 			if (!response.ok && response.status === 404) {
 				navigate("/404")
@@ -20,12 +25,22 @@ const BizPageWrapper: React.FC = () => {
 			}
 			const data = await response.json()
 			setBusinessData(data)
+		} catch (error) {
+			console.error("Error fetching business data:", error)
+			navigate("/404")
+		} finally {
+			setIsLoading(false)
 		}
+	}
 
 	useEffect(() => {
 		fetchBusiness()
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [businessDomain])
+
+	if (isLoading) {
+		return <Loading />
+	}
 
 	return <BizPageLayout businessData={businessData} />
 }

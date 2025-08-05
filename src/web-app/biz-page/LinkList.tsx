@@ -1,4 +1,3 @@
-import { Box, Stack } from "@mui/material"
 import LinkWrapper from "../../custom-components/LinkWrapper"
 import { CustomLink } from "./BizPageLayout"
 
@@ -11,24 +10,17 @@ const LinkList: React.FC<LinkListProps> = ({ allLinks }) => {
 		return null
 	}
 
+	// Sort links by order
+	const sortedLinks = [...allLinks].sort((a, b) => a.order - b.order)
+
 	return (
-		<Box
-			sx={{
-				width: "100%",
-				maxWidth: { xs: "95vw", sm: "380px" },
-			}}
-		>
-			<Stack
-				spacing={{ xs: 2, sm: 2.5 }}
-				sx={{
-					alignItems: "center",
-				}}
-			>
-				{allLinks.map((link) => (
-					<LinkWrapper key={link.id} url={link.url} title={link.title} />
-				))}
-			</Stack>
-		</Box>
+		<div className="space-y-3">
+			{sortedLinks.map((link, index) => (
+				<div key={link.id} style={{ animationDelay: `${index * 0.1}s` }}>
+					<LinkWrapper url={link.url} title={link.title} />
+				</div>
+			))}
+		</div>
 	)
 }
 

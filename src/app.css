@@ -1,14 +1,74 @@
-body {
-	margin: 0, auto;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Roboto", sans-serif;
-	min-height: 100vh;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-	background-attachment: fixed;
+/* Mobile-first global styles */
+* {
+	box-sizing: border-box;
 }
 
+html {
+	/* Prevent text scaling on mobile landscape */
+	-webkit-text-size-adjust: 100%;
+	/* Smooth scrolling */
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
+	min-height: 100vh;
+	/* Better font rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Prevent horizontal overflow */
+	overflow-x: hidden;
+}
+
+/* Link styles */
 a {
 	text-decoration: none;
 	color: inherit;
+	/* Better touch targets on mobile */
+	touch-action: manipulation;
+}
+
+/* Button improvements for mobile */
+button {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbars but maintain functionality */
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+/* Focus improvements for accessibility */
+*:focus-visible {
+	outline: 2px solid hsl(var(--ring));
+	outline-offset: 2px;
+}
+
+/* Better text rendering on mobile */
+@media (max-width: 768px) {
+	body {
+		font-size: 16px; /* Prevent zoom on iOS */
+		line-height: 1.5;
+	}
+
+	/* Larger touch targets for mobile */
+	button,
+	[role="button"],
+	input[type="submit"],
+	input[type="button"] {
+		min-height: 44px;
+		min-width: 44px;
+	}
 }

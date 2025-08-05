@@ -1,13 +1,14 @@
-import {
-	Instagram,
-	Facebook,
-	LinkedIn,
-	X,
-	YouTube,
-	Pinterest,
-} from "@mui/icons-material"
-import { Box, IconButton, Link } from "@mui/material"
 import { SocialLink } from "./BizPageLayout"
+import { Button } from "../../../components/ui/button"
+import {
+	FaFacebook,
+	FaInstagram,
+	FaLinkedin,
+	FaXTwitter,
+	FaYoutube,
+	FaPinterest,
+} from "react-icons/fa6"
+import { motion } from "framer-motion"
 
 interface SocialMediaLinkListProps {
 	businessSocialMediaLinks: SocialLink[]
@@ -19,39 +20,45 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 	const socialMediaComponents = [
 		{
 			platform: "facebook",
-			component: <Facebook />,
-			color: "#1877F2",
-			hoverColor: "#166FE5",
+			label: "Facebook",
+			icon: FaFacebook,
+			color:
+				"text-blue-600 hover:bg-blue-100 hover:border-blue-400 hover:text-blue-800 hover:shadow-lg hover:shadow-blue-400/40",
 		},
 		{
 			platform: "instagram",
-			component: <Instagram />,
-			color: "#E4405F",
-			hoverColor: "#C13584",
+			label: "Instagram",
+			icon: FaInstagram,
+			color:
+				"text-pink-600 hover:bg-gradient-to-br hover:from-pink-100 hover:to-purple-100 hover:border-pink-400 hover:text-pink-800 hover:shadow-lg hover:shadow-pink-400/40",
 		},
 		{
 			platform: "linkedin",
-			component: <LinkedIn />,
-			color: "#0A66C2",
-			hoverColor: "#004182",
+			label: "LinkedIn",
+			icon: FaLinkedin,
+			color:
+				"text-blue-700 hover:bg-blue-100 hover:border-blue-400 hover:text-blue-900 hover:shadow-lg hover:shadow-blue-400/40",
 		},
 		{
 			platform: "x",
-			component: <X />,
-			color: "#000000",
-			hoverColor: "#1D1D1D",
+			label: "X",
+			icon: FaXTwitter,
+			color:
+				"text-gray-800 hover:bg-gray-100 hover:border-gray-400 hover:text-gray-900 hover:shadow-lg hover:shadow-gray-400/40",
 		},
 		{
 			platform: "youtube",
-			component: <YouTube />,
-			color: "#FF0000",
-			hoverColor: "#CC0000",
+			label: "YouTube",
+			icon: FaYoutube,
+			color:
+				"text-red-600 hover:bg-red-100 hover:border-red-400 hover:text-red-800 hover:shadow-lg hover:shadow-red-400/40",
 		},
 		{
 			platform: "pinterest",
-			component: <Pinterest />,
-			color: "#BD081C",
-			hoverColor: "#9A0610",
+			label: "Pinterest",
+			icon: FaPinterest,
+			color:
+				"text-red-600 hover:bg-red-100 hover:border-red-400 hover:text-red-800 hover:shadow-lg hover:shadow-red-400/40",
 		},
 	]
 
@@ -64,65 +71,50 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 	}
 
 	return (
-		<Box
-			sx={{
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				gap: 1,
-				p: 2,
-				borderRadius: 3,
-				background: "linear-gradient(145deg, #fafafa 0%, #f5f5f5 100%)",
-				border: "1px solid",
-				borderColor: "grey.200",
-				boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
-			}}
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.3, delay: 0.1 }}
+			className="w-full"
 		>
-			{activeSocialLinks.map((link) => {
-				const socialMediaInfo = socialMediaComponents.find(
-					(component) => component.platform === link.social_media_platform
-				)
+			<div className="flex justify-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+				{activeSocialLinks.map((link, index) => {
+					const socialMediaInfo = socialMediaComponents.find(
+						(component) => component.platform === link.social_media_platform
+					)
 
-				if (!socialMediaInfo) return null
+					if (!socialMediaInfo) return null
 
-				return (
-					<Link
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						key={link.social_media_platform}
-						sx={{ textDecoration: "none" }}
-					>
-						<IconButton
-							sx={{
-								color: socialMediaInfo.color,
-								backgroundColor: "white",
-								border: "2px solid",
-								borderColor: "grey.300",
-								width: 48,
-								height: 48,
-								borderRadius: 2,
-								boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-								transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-								"&:hover": {
-									color: socialMediaInfo.hoverColor,
-									backgroundColor: "grey.50",
-									borderColor: socialMediaInfo.color,
-									transform: "translateY(-2px)",
-									boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-								},
-								"&:active": {
-									transform: "translateY(0)",
-									boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-								},
-							}}
+					const IconComponent = socialMediaInfo.icon
+
+					return (
+						<motion.div
+							key={link.social_media_platform}
+							initial={{ opacity: 0, scale: 0.8 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.2, delay: index * 0.1 }}
+							className="flex-shrink-0"
 						>
-							{socialMediaInfo.component}
-						</IconButton>
-					</Link>
-				)
-			})}
-		</Box>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className={`h-12 w-12 bg-white border-2 border-gray-200 hover:shadow-lg transition-all duration-200 active:scale-95 ${socialMediaInfo.color}`}
+							>
+								<a
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex items-center justify-center w-full h-full"
+								>
+									<IconComponent className="w-5 h-5" />
+								</a>
+							</Button>
+						</motion.div>
+					)
+				})}
+			</div>
+		</motion.div>
 	)
 }
 
