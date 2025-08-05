@@ -24,14 +24,14 @@ function App() {
 	}
 
 	return (
-		<div>
+		<environmentUrlContext.Provider value={environmentUrl}>
 			<Routes>
 				<Route path="/" element={<PublicHome />} />
 				<Route path={`/:businessDomain`} element={<BizPageWrapper />} />
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
-		</div>
+		</environmentUrlContext.Provider>
 	)
 }
 
