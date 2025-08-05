@@ -6,14 +6,10 @@ import {
 	CardHeader,
 	CardTitle,
 	CardDescription,
-} from "../../../components/ui/card"
-import { Button } from "../../../components/ui/button"
-import { Badge } from "../../../components/ui/badge"
-import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
-} from "../../../components/ui/avatar"
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { motion } from "framer-motion"
 import { Mail, Users, ExternalLink } from "lucide-react"
 

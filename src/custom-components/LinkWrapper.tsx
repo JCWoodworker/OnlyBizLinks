@@ -1,4 +1,4 @@
-import { Button } from "../../components/ui/button"
+import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 

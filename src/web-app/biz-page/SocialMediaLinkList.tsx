@@ -1,5 +1,5 @@
 import { SocialLink } from "./BizPageLayout"
-import { Button } from "../../../components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
 	FaFacebook,
 	FaInstagram,

@@ -5,12 +5,12 @@ import {
 	CardContent,
 	CardHeader,
 	CardTitle,
-} from "../../../components/ui/card"
+} from "@/components/ui/card"
 import {
 	Avatar,
 	AvatarImage,
 	AvatarFallback,
-} from "../../../components/ui/avatar"
+} from "@/components/ui/avatar"
 import { motion } from "framer-motion"
 import { Building2 } from "lucide-react"
 
