@@ -1,16 +1,7 @@
 import LinkList from "./LinkList"
 import SocialMediaLinkList from "./SocialMediaLinkList"
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card"
-import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
-} from "@/components/ui/avatar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { motion } from "framer-motion"
 import { Building2 } from "lucide-react"
 
