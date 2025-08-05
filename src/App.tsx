@@ -25,7 +25,7 @@ function App() {
 	} else if (environment === "prod") {
 		environmentUrl = import.meta.env.VITE_BACKEND_URL_PROD
 	} else {
-		environmentUrl = ""
+		environmentUrl = import.meta.env.VITE_BACKEND_URL_PROD
 	}
 
 	return (
