@@ -22,37 +22,43 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 			platform: "facebook",
 			label: "Facebook",
 			icon: FaFacebook,
-			color: "hover:bg-blue-50 hover:border-blue-200",
+			color:
+				"text-blue-600 hover:bg-blue-100 hover:border-blue-400 hover:text-blue-800 hover:shadow-lg hover:shadow-blue-400/40",
 		},
 		{
 			platform: "instagram",
 			label: "Instagram",
 			icon: FaInstagram,
-			color: "hover:bg-pink-50 hover:border-pink-200",
+			color:
+				"text-pink-600 hover:bg-gradient-to-br hover:from-pink-100 hover:to-purple-100 hover:border-pink-400 hover:text-pink-800 hover:shadow-lg hover:shadow-pink-400/40",
 		},
 		{
 			platform: "linkedin",
 			label: "LinkedIn",
 			icon: FaLinkedin,
-			color: "hover:bg-blue-50 hover:border-blue-200",
+			color:
+				"text-blue-700 hover:bg-blue-100 hover:border-blue-400 hover:text-blue-900 hover:shadow-lg hover:shadow-blue-400/40",
 		},
 		{
 			platform: "x",
 			label: "X",
 			icon: FaXTwitter,
-			color: "hover:bg-gray-50 hover:border-gray-200",
+			color:
+				"text-gray-800 hover:bg-gray-100 hover:border-gray-400 hover:text-gray-900 hover:shadow-lg hover:shadow-gray-400/40",
 		},
 		{
 			platform: "youtube",
 			label: "YouTube",
 			icon: FaYoutube,
-			color: "hover:bg-red-50 hover:border-red-200",
+			color:
+				"text-red-600 hover:bg-red-100 hover:border-red-400 hover:text-red-800 hover:shadow-lg hover:shadow-red-400/40",
 		},
 		{
 			platform: "pinterest",
 			label: "Pinterest",
 			icon: FaPinterest,
-			color: "hover:bg-red-50 hover:border-red-200",
+			color:
+				"text-red-600 hover:bg-red-100 hover:border-red-400 hover:text-red-800 hover:shadow-lg hover:shadow-red-400/40",
 		},
 	]
 
@@ -93,7 +99,7 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 								asChild
 								variant="outline"
 								size="lg"
-								className={`h-12 w-12 bg-white/50 backdrop-blur-sm border-gray-200 transition-all duration-200 active:scale-95 ${socialMediaInfo.color}`}
+								className={`h-12 w-12 bg-white border-2 border-gray-200 hover:shadow-lg transition-all duration-200 active:scale-95 ${socialMediaInfo.color}`}
 							>
 								<a
 									href={link.url}

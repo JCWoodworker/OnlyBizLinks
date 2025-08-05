@@ -19,18 +19,18 @@ const LinkWrapper: React.FC<LinkProps> = ({ url, title }) => {
 				asChild
 				variant="outline"
 				size="lg"
-				className="w-full h-12 justify-between text-left bg-white/50 backdrop-blur-sm border-gray-200 hover:bg-white/80 hover:border-gray-300 hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+				className="w-full h-12 justify-between text-left bg-gradient-to-r from-white to-blue-50 border-blue-200 hover:from-blue-50 hover:to-indigo-100 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-400/30 transition-all duration-200 active:scale-[0.98]"
 			>
 				<a
 					href={url}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="flex items-center justify-between w-full px-4 py-3"
+					className="flex items-center justify-between w-full px-4 py-3 group"
 				>
-					<span className="font-medium text-gray-900 truncate pr-2">
+					<span className="font-medium text-slate-800 truncate pr-2">
 						{title}
 					</span>
-					<ExternalLink className="w-4 h-4 text-gray-500 flex-shrink-0" />
+					<ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
 				</a>
 			</Button>
 		</motion.div>

@@ -3,10 +3,10 @@ import { Skeleton } from "../../components/ui/skeleton"
 
 const Loading: React.FC = () => {
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-6">
+		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-200 px-4 py-6">
 			<div className="max-w-md mx-auto space-y-6">
 				{/* Business Header Skeleton */}
-				<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+				<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 					<CardHeader className="text-center pb-4">
 						<div className="flex justify-center mb-4">
 							<Skeleton className="w-24 h-24 rounded-full" />
@@ -16,7 +16,7 @@ const Loading: React.FC = () => {
 				</Card>
 
 				{/* Social Media Links Skeleton */}
-				<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+				<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 					<CardHeader className="pb-3">
 						<Skeleton className="h-6 w-32" />
 					</CardHeader>
@@ -30,7 +30,7 @@ const Loading: React.FC = () => {
 				</Card>
 
 				{/* Custom Links Skeleton */}
-				<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+				<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 					<CardHeader className="pb-3">
 						<Skeleton className="h-6 w-24" />
 					</CardHeader>

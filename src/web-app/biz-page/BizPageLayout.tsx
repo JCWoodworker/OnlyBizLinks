@@ -54,7 +54,7 @@ const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 	}
 
 	return (
-		<main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-6">
+		<main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-200 px-4 py-6">
 			<div className="max-w-md mx-auto space-y-6">
 				{/* Business Header Card */}
 				<motion.div
@@ -62,18 +62,18 @@ const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.4 }}
 				>
-					<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+					<Card className="bg-white border-blue-200 shadow-2xl shadow-blue-500/20">
 						<CardHeader className="text-center pb-4">
 							<div className="flex justify-center mb-4">
-								<Avatar className="w-24 h-24 ring-4 ring-white shadow-lg">
+								<Avatar className="w-24 h-24 ring-4 ring-blue-400 shadow-xl shadow-blue-500/30">
 									{businessData?.logo ? (
 										<AvatarImage
 											src={businessData.logo}
 											alt={`${businessData.name} logo`}
-											className="object-cover"
+											className="object-contain p-2"
 										/>
 									) : null}
-									<AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xl font-bold">
+									<AvatarFallback className="bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white text-xl font-bold">
 										{businessData?.name ? (
 											getBusinessInitials(businessData.name)
 										) : (
@@ -82,7 +82,7 @@ const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 									</AvatarFallback>
 								</Avatar>
 							</div>
-							<CardTitle className="text-2xl font-bold text-gray-900">
+							<CardTitle className="text-2xl font-bold text-slate-900">
 								{businessData?.name || "Business Name"}
 							</CardTitle>
 						</CardHeader>
@@ -96,9 +96,10 @@ const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.4, delay: 0.1 }}
 					>
-						<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+						<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 							<CardHeader className="pb-3">
-								<CardTitle className="text-lg text-gray-800">
+								<CardTitle className="text-lg text-slate-800 font-semibold flex items-center gap-2">
+									<div className="w-2 h-2 rounded-full bg-blue-500"></div>
 									Connect With Us
 								</CardTitle>
 							</CardHeader>
@@ -118,9 +119,10 @@ const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.4, delay: 0.2 }}
 					>
-						<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+						<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 							<CardHeader className="pb-3">
-								<CardTitle className="text-lg text-gray-800">
+								<CardTitle className="text-lg text-slate-800 font-semibold flex items-center gap-2">
+									<div className="w-2 h-2 rounded-full bg-blue-500"></div>
 									Quick Links
 								</CardTitle>
 							</CardHeader>

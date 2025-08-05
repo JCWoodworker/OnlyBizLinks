@@ -25,7 +25,7 @@ const PublicHome = () => {
 	const navigate = useNavigate()
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-200">
 			<div className="max-w-md mx-auto px-4 py-8 space-y-8">
 				{/* Hero Section */}
 				<motion.div
@@ -33,7 +33,7 @@ const PublicHome = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 				>
-					<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-xl">
+					<Card className="bg-white border-blue-200 shadow-2xl shadow-blue-500/20">
 						<CardHeader className="text-center pb-6">
 							{/* Logo Container */}
 							<motion.div
@@ -42,11 +42,11 @@ const PublicHome = () => {
 								transition={{ duration: 0.5, delay: 0.2 }}
 								className="flex justify-center mb-6"
 							>
-								<Avatar className="w-32 h-32 ring-4 ring-white shadow-xl">
+								<Avatar className="w-32 h-32 ring-4 ring-blue-400 shadow-xl shadow-blue-500/30">
 									<AvatarImage
 										src="https://myrestaurantlinks-images.s3.us-east-2.amazonaws.com/OnlyBizLinksLogo.svg"
 										alt="OnlyBizLinks"
-										className="object-cover"
+										className="object-contain p-3"
 									/>
 									<AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-2xl font-bold">
 										OBL
@@ -55,7 +55,7 @@ const PublicHome = () => {
 							</motion.div>
 
 							{/* Main Heading */}
-							<CardTitle className="text-3xl font-bold text-gray-900 mb-3">
+							<CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">
 								OnlyBizLinks
 							</CardTitle>
 
@@ -75,10 +75,10 @@ const PublicHome = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
 				>
-					<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+					<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 						<CardHeader className="pb-4">
-							<CardTitle className="text-xl text-gray-800 flex items-center gap-2">
-								<Users className="w-5 h-5" />
+							<CardTitle className="text-xl text-slate-800 flex items-center gap-2">
+								<Users className="w-5 h-5 text-blue-500" />
 								Featured Businesses
 							</CardTitle>
 						</CardHeader>
@@ -91,23 +91,26 @@ const PublicHome = () => {
 									transition={{ duration: 0.3, delay: 0.1 * index }}
 								>
 									<Link to={`/${business.domain}`} className="block">
-										<Card className="bg-gradient-to-r from-white to-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 active:scale-[0.98]">
+										<Card className="bg-gradient-to-r from-white to-blue-50 border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-400/30 transition-all duration-200 active:scale-[0.98]">
 											<CardContent className="p-4">
 												<div className="flex items-center justify-between">
 													<div className="flex-1">
 														<div className="flex items-center gap-2 mb-1">
-															<Badge variant="secondary" className="text-xs">
+															<Badge
+																variant="secondary"
+																className="text-xs bg-blue-100 text-blue-700 border-blue-200"
+															>
 																{business.type}
 															</Badge>
 														</div>
-														<h3 className="font-semibold text-gray-900 mb-1">
+														<h3 className="font-semibold text-slate-900 mb-1">
 															{business.name}
 														</h3>
-														<p className="text-sm text-gray-600">
+														<p className="text-sm text-blue-600 font-medium">
 															View Menu & Links
 														</p>
 													</div>
-													<ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0" />
+													<ExternalLink className="w-4 h-4 text-blue-400 group-hover:text-blue-600 transition-colors flex-shrink-0" />
 												</div>
 											</CardContent>
 										</Card>
@@ -124,10 +127,12 @@ const PublicHome = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.4 }}
 				>
-					<Card className="bg-white/80 backdrop-blur-sm border-gray-200 shadow-lg">
+					<Card className="bg-gradient-to-br from-white to-blue-50 border-blue-300 shadow-xl shadow-blue-400/20">
 						<CardHeader className="pb-4">
-							<CardTitle className="text-lg text-gray-800 text-center">
+							<CardTitle className="text-lg text-slate-800 text-center flex items-center justify-center gap-2">
+								<div className="w-2 h-2 rounded-full bg-purple-500"></div>
 								Get Started Today
+								<div className="w-2 h-2 rounded-full bg-purple-500"></div>
 							</CardTitle>
 							<CardDescription className="text-center">
 								Interested in premium NFC solutions for your business?
@@ -137,7 +142,7 @@ const PublicHome = () => {
 							<Button
 								asChild
 								size="lg"
-								className="w-full h-12 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium"
+								className="w-full h-12 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-700 text-white font-medium shadow-lg shadow-blue-200/30"
 							>
 								<a
 									href="mailto:jc@rilocalwoodworks.com"
