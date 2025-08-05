@@ -10,13 +10,16 @@ const LinkList: React.FC<LinkListProps> = ({ allLinks }) => {
 		return null
 	}
 
+	// Sort links by order
+	const sortedLinks = [...allLinks].sort((a, b) => a.order - b.order)
+
 	return (
-		<div>
-			<div>
-				{allLinks.map((link) => (
-					<LinkWrapper key={link.id} url={link.url} title={link.title} />
-				))}
-			</div>
+		<div className="space-y-3">
+			{sortedLinks.map((link, index) => (
+				<div key={link.id} style={{ animationDelay: `${index * 0.1}s` }}>
+					<LinkWrapper url={link.url} title={link.title} />
+				</div>
+			))}
 		</div>
 	)
 }

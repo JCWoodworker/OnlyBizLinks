@@ -1,4 +1,14 @@
 import { SocialLink } from "./BizPageLayout"
+import { Button } from "../../../components/ui/button"
+import {
+	FaFacebook,
+	FaInstagram,
+	FaLinkedin,
+	FaXTwitter,
+	FaYoutube,
+	FaPinterest,
+} from "react-icons/fa6"
+import { motion } from "framer-motion"
 
 interface SocialMediaLinkListProps {
 	businessSocialMediaLinks: SocialLink[]
@@ -11,32 +21,38 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 		{
 			platform: "facebook",
 			label: "Facebook",
-			symbol: "📘",
+			icon: FaFacebook,
+			color: "hover:bg-blue-50 hover:border-blue-200",
 		},
 		{
 			platform: "instagram",
 			label: "Instagram",
-			symbol: "📷",
+			icon: FaInstagram,
+			color: "hover:bg-pink-50 hover:border-pink-200",
 		},
 		{
 			platform: "linkedin",
 			label: "LinkedIn",
-			symbol: "💼",
+			icon: FaLinkedin,
+			color: "hover:bg-blue-50 hover:border-blue-200",
 		},
 		{
 			platform: "x",
 			label: "X",
-			symbol: "🐦",
+			icon: FaXTwitter,
+			color: "hover:bg-gray-50 hover:border-gray-200",
 		},
 		{
 			platform: "youtube",
 			label: "YouTube",
-			symbol: "📺",
+			icon: FaYoutube,
+			color: "hover:bg-red-50 hover:border-red-200",
 		},
 		{
 			platform: "pinterest",
 			label: "Pinterest",
-			symbol: "📌",
+			icon: FaPinterest,
+			color: "hover:bg-red-50 hover:border-red-200",
 		},
 	]
 
@@ -49,29 +65,50 @@ const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({
 	}
 
 	return (
-		<div>
-			{activeSocialLinks.map((link) => {
-				const socialMediaInfo = socialMediaComponents.find(
-					(component) => component.platform === link.social_media_platform
-				)
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.3, delay: 0.1 }}
+			className="w-full"
+		>
+			<div className="flex justify-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+				{activeSocialLinks.map((link, index) => {
+					const socialMediaInfo = socialMediaComponents.find(
+						(component) => component.platform === link.social_media_platform
+					)
 
-				if (!socialMediaInfo) return null
+					if (!socialMediaInfo) return null
 
-				return (
-					<a
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						key={link.social_media_platform}
-					>
-						<button>
-							<span>{socialMediaInfo.symbol}</span>
-							<span>{socialMediaInfo.label}</span>
-						</button>
-					</a>
-				)
-			})}
-		</div>
+					const IconComponent = socialMediaInfo.icon
+
+					return (
+						<motion.div
+							key={link.social_media_platform}
+							initial={{ opacity: 0, scale: 0.8 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.2, delay: index * 0.1 }}
+							className="flex-shrink-0"
+						>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className={`h-12 w-12 bg-white/50 backdrop-blur-sm border-gray-200 transition-all duration-200 active:scale-95 ${socialMediaInfo.color}`}
+							>
+								<a
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex items-center justify-center w-full h-full"
+								>
+									<IconComponent className="w-5 h-5" />
+								</a>
+							</Button>
+						</motion.div>
+					)
+				})}
+			</div>
+		</motion.div>
 	)
 }
 
