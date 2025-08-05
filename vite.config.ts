@@ -5,15 +5,15 @@ import tailwindcss from "@tailwindcss/postcss"
 import autoprefixer from "autoprefixer"
 
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
+	plugins: [react()],
+	resolve: {
+		alias: {
+			"@": path.resolve(__dirname, "./src"),
+		},
+	},
+	css: {
+		postcss: {
+			plugins: [tailwindcss, autoprefixer],
+		},
+	},
 })
