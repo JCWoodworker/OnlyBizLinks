@@ -1,10 +1,12 @@
 import { Box, Stack } from "@mui/material"
 import LinkWrapper from "../../custom-components/LinkWrapper"
-import { useBusinessStore } from "../../stores/BusinessStore"
+import { CustomLink } from "./BizPageLayout"
 
-const LinkList: React.FC = () => {
-	const allLinks = useBusinessStore((state) => state.businessCustomLinks)
+interface LinkListProps {
+	allLinks: CustomLink[]
+}
 
+const LinkList: React.FC<LinkListProps> = ({ allLinks }) => {
 	if (allLinks.length === 0) {
 		return null
 	}

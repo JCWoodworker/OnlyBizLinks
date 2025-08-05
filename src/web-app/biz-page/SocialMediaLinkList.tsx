@@ -7,10 +7,10 @@ import {
 	Pinterest,
 } from "@mui/icons-material"
 import { Box, IconButton, Link } from "@mui/material"
-import { SocialMediaLink } from "../../stores/BusinessStore"
+import { SocialLink } from "./BizPageLayout"
 
 interface SocialMediaLinkListProps {
-	businessSocialMediaLinks: SocialMediaLink[]
+	businessSocialMediaLinks: SocialLink[]
 }
 
 const SocialMediaLinkList: React.FC<SocialMediaLinkListProps> = ({

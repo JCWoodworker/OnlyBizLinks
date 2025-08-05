@@ -1,13 +1,37 @@
 import { Box, Typography, Container, Card } from "@mui/material"
-import SocialMediaLinkWrapper from "./SocialMediaLinkWrapper"
 import LinkList from "./LinkList"
-import { useBusinessStore } from "../../stores/BusinessStore"
+import SocialMediaLinkList from "./SocialMediaLinkList"
 
-const BizPageLayout: React.FC = () => {
-	const businessName = useBusinessStore((state) => state.businessName)
-	const businessLogo: string | null = useBusinessStore(
-		(state) => state.businessLogo
-	)
+export type BusinessData = {
+	id: number
+	domain: string
+	name: string
+	logo: string
+	socialLinks: SocialLink[]
+	customLinks: CustomLink[]
+} | null
+
+export type CustomLink = {
+	id: number
+	business_id: number
+	title: string
+	url: string
+	order: number
+}
+
+export type SocialLink = {
+	id: number
+	business_id: number
+	social_media_platform: string
+	is_active: boolean
+	url: string
+}
+
+interface BizPageLayoutProps {
+	businessData: BusinessData
+}
+
+const BizPageLayout: React.FC<BizPageLayoutProps> = ({ businessData }) => {
 
 	return (
 		<Container
@@ -35,7 +59,7 @@ const BizPageLayout: React.FC = () => {
 						gap: 2,
 					}}
 				>
-					{businessLogo && (
+					{businessData?.logo && (
 						<Card
 							elevation={0}
 							sx={{
@@ -50,8 +74,8 @@ const BizPageLayout: React.FC = () => {
 						>
 							<Box
 								component="img"
-								src={businessLogo}
-								alt={`${businessName} logo`}
+								src={businessData?.logo}
+								alt={`${businessData?.name} logo`}
 								sx={{
 									width: "100%",
 									maxWidth: "280px",
@@ -63,7 +87,7 @@ const BizPageLayout: React.FC = () => {
 							/>
 						</Card>
 					)}
-					{!businessLogo && (
+					{!businessData?.logo && (
 						<Typography
 							variant="h2"
 							component="h1"
@@ -77,16 +101,16 @@ const BizPageLayout: React.FC = () => {
 								mb: 2,
 							}}
 						>
-							{businessName}
+							{businessData?.name}
 						</Typography>
 					)}
 				</Box>
 
 				{/* Social Media Links */}
-				<SocialMediaLinkWrapper />
+				<SocialMediaLinkList businessSocialMediaLinks={businessData?.socialLinks || []} />
 
 				{/* Custom Links */}
-				<LinkList />
+				<LinkList allLinks={businessData?.customLinks || []} />
 			</Box>
 		</Container>
 	)
